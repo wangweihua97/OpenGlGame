@@ -1,0 +1,23 @@
+﻿Window.obj : error LNK2019: 无法解析的外部符号 _gladLoadGLLoader，函数 "public: __thiscall Window::Window(int,int)" (??0Window@@QAE@HH@Z) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwInit，函数 "public: __thiscall Window::Window(int,int)" (??0Window@@QAE@HH@Z) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwTerminate，函数 "public: __thiscall Window::Window(int,int)" (??0Window@@QAE@HH@Z) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwWindowHint，函数 "public: __thiscall Window::Window(int,int)" (??0Window@@QAE@HH@Z) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwCreateWindow，函数 "public: __thiscall Window::Window(int,int)" (??0Window@@QAE@HH@Z) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwWindowShouldClose，函数 "public: void __thiscall Window::Mainloop(void)" (?Mainloop@Window@@QAEXXZ) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwSetWindowShouldClose，函数 "public: void __thiscall Window::Input(void)" (?Input@Window@@QAEXXZ) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwGetWindowSize，函数 "public: static void __cdecl Window::Resize(struct GLFWwindow *,int,int)" (?Resize@Window@@SAXPAUGLFWwindow@@HH@Z) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwSetFramebufferSizeCallback，函数 "public: __thiscall Window::Window(int,int)" (??0Window@@QAE@HH@Z) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwPollEvents，函数 "public: void __thiscall Window::Mainloop(void)" (?Mainloop@Window@@QAEXXZ) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwGetKey，函数 "public: void __thiscall Window::Input(void)" (?Input@Window@@QAEXXZ) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwMakeContextCurrent，函数 "public: __thiscall Window::Window(int,int)" (??0Window@@QAE@HH@Z) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwSwapBuffers，函数 "public: void __thiscall Window::Mainloop(void)" (?Mainloop@Window@@QAEXXZ) 中引用了该符号
+Window.obj : error LNK2019: 无法解析的外部符号 _glfwGetProcAddress，函数 "public: __thiscall Window::Window(int,int)" (??0Window@@QAE@HH@Z) 中引用了该符号
+Window.obj : error LNK2001: 无法解析的外部符号 _glad_glClear
+Window.obj : error LNK2001: 无法解析的外部符号 _glad_glClearColor
+Window.obj : error LNK2001: 无法解析的外部符号 _glad_glViewport
+Window.obj : error LNK2001: 无法解析的外部符号 "private: static int Window::m_width" (?m_width@Window@@0HA)
+Window.obj : error LNK2001: 无法解析的外部符号 "private: static int Window::m_height" (?m_height@Window@@0HA)
+Window.obj : error LNK2001: 无法解析的外部符号 "private: static struct GLFWwindow * Window::window_ptr" (?window_ptr@Window@@0PAUGLFWwindow@@A)
+C:\OpenGL\Libs\glfw3.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
+C:\OpenGL\Libs\assimp-vc142-mtd.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
+E:\OpenG\GLCS\OpenGLCsGame\Debug\OpenGLCsGame.exe : fatal error LNK1120: 20 个无法解析的外部命令
