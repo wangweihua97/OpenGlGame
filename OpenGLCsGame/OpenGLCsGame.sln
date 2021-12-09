@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLCsGame", "OpenGLCsGame\OpenGLCsGame.vcxproj", "{89A1962B-2D76-4AF9-91B3-B75AA6440692}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89A1962B-2D76-4AF9-91B3-B75AA6440692}.Debug|x64.ActiveCfg = Debug|x64
+		{89A1962B-2D76-4AF9-91B3-B75AA6440692}.Debug|x64.Build.0 = Debug|x64
+		{89A1962B-2D76-4AF9-91B3-B75AA6440692}.Debug|x86.ActiveCfg = Debug|Win32
+		{89A1962B-2D76-4AF9-91B3-B75AA6440692}.Debug|x86.Build.0 = Debug|Win32
+		{89A1962B-2D76-4AF9-91B3-B75AA6440692}.Release|x64.ActiveCfg = Release|x64
+		{89A1962B-2D76-4AF9-91B3-B75AA6440692}.Release|x64.Build.0 = Release|x64
+		{89A1962B-2D76-4AF9-91B3-B75AA6440692}.Release|x86.ActiveCfg = Release|Win32
+		{89A1962B-2D76-4AF9-91B3-B75AA6440692}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FC7EF87-6F7C-4B7A-A311-5E7B55EEFD23}
+	EndGlobalSection
+EndGlobal
