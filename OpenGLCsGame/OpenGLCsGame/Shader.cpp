@@ -2,6 +2,11 @@
 
 #include <iostream>
 
+
+// constructor
+
+inline Shader::Shader() { }
+
 Shader& Shader::Use()
 {
     glUseProgram(this->ID);
