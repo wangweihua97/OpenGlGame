@@ -1,11 +1,13 @@
-#include "shader.h"
+#include "Shader.h"
 
 #include <iostream>
 
 
 // constructor
 
-inline Shader::Shader() { }
+Shader::Shader()
+{ 
+}
 
 Shader& Shader::Use()
 {

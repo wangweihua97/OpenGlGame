@@ -1,4 +1,6 @@
 #include "Window.h"
+#include "Global.h"
+#include "Time.h"
 Window* Window::Instance = NULL;
 Window::Window(int width, int height)
 {
@@ -66,13 +68,23 @@ void Resize(GLFWwindow* window, int width, int height)
 
 void Window::Mainloop()
 {
+	float starTime = glfwGetTime();
+	float currentFrame, lastFrame = starTime;
+	SetStartTime(starTime);
+
 	while (!glfwWindowShouldClose(Window::window_ptr))
 	{
+		currentFrame = glfwGetTime();
+		SetCurTime(currentFrame);
+		float deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+		SetDeltaTime(deltaTime);
+
 		//for each frame 
 		Input();
 
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 
 		// all drawing goes here ..
 
@@ -80,4 +92,24 @@ void Window::Mainloop()
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
 	}
+}
+
+void Window::SetDeltaTime(float time)
+{
+	Time::_deltaTime = time;
+}
+
+void Window::SetStartTime(float time)
+{
+	Time::_startTime = time;
+}
+
+void Window::SetCurTime(float time)
+{
+	Time::_curTime = time;
+}
+
+void Window::InitGlobal()
+{
+	m_global = Global::Init();
 }
