@@ -8,9 +8,13 @@ class Component
 public:
 	virtual string GetName();
 	GameObject* gameObject;
+	Component();
 	Component(GameObject* gameObject);
 	void SetNext(Component* next);
 	virtual void Update();
+	virtual void LateUpdate();
+	virtual void Render();
+	~Component();
 private:
 	Component* _next;
 	string _name;

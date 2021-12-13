@@ -1,6 +1,10 @@
 #include "Window.h"
-#include "Global.h"
+#include "Scene.h"
 #include "Time.h"
+#include "Input.h"
+#include "EventCenter.h"
+#include "ResourceManager.h"
+#include <boost/bind/bind.hpp>
 Window* Window::Instance = NULL;
 Window::Window(int width, int height)
 {
@@ -21,7 +25,7 @@ Window::Window(int width, int height)
 
 	// glfw window creation
 	// --------------------
-	window_ptr = glfwCreateWindow(width, height, "LearnOpenGL", NULL, NULL);
+	window_ptr = glfwCreateWindow(width, height, "CSGame", NULL, NULL);
 	if (window_ptr == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -30,6 +34,7 @@ Window::Window(int width, int height)
 	}
 	glfwMakeContextCurrent(window_ptr);
 	glfwSetFramebufferSizeCallback(window_ptr, Resize);
+	glfwSetCursorPosCallback(window_ptr, mouseCallback);
 
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------
@@ -46,12 +51,21 @@ Window::~Window()
 	glfwTerminate();
 }
 
-void Window::Input()
+void Window::InitEvent()
 {
-	if (glfwGetKey(window_ptr, GLFW_KEY_ESCAPE))
-	{
-		glfwSetWindowShouldClose(window_ptr, true);
-	}
+	EventCenter::Instance->AddEvent<string>("Log", boost::bind(&Window::Log, this, placeholders::_1));
+	EventCenter::Instance->AddEvent<Key>("KeyDown", boost::bind(&Window::KeyDown, this, placeholders::_1));
+	EventCenter::Instance->AddEvent<Key>("KeyUp", boost::bind(&Window::KeyUp, this, placeholders::_1));
+}
+
+void Window::InitInput()
+{
+	_input = new Input();
+}
+
+void Window::InitResource()
+{
+	ResourceManager::LoadShader("Shader/cube_vs.vs", "Shader/cube_fs.fs", nullptr, "CubeShader");
 }
 
 void Resize(GLFWwindow* window, int width, int height)
@@ -65,9 +79,21 @@ void Resize(GLFWwindow* window, int width, int height)
 		printf("resized \n");
 	}
 }
+void mouseCallback(GLFWwindow* window, double xpos, double ypos)
+{
+	Input::xoffset = xpos - Input::xpos;
+	Input::yoffset = Input::ypos - ypos;
+
+	Input::xpos = xpos;
+	Input::ypos = ypos;
+}
 
 void Window::Mainloop()
 {
+	InitResource();
+	InitEvent();
+	InitInput();
+	InitScene();
 	float starTime = glfwGetTime();
 	float currentFrame, lastFrame = starTime;
 	SetStartTime(starTime);
@@ -80,8 +106,13 @@ void Window::Mainloop()
 		lastFrame = currentFrame;
 		SetDeltaTime(deltaTime);
 
+		_input->Update();
 		//for each frame 
-		Input();
+
+		Scene::Instace->Update();
+		Scene::Instace->LateUpdate();
+		Scene::Instace->Render();
+
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
@@ -109,7 +140,22 @@ void Window::SetCurTime(float time)
 	Time::_curTime = time;
 }
 
-void Window::InitGlobal()
+void Window::InitScene()
 {
-	m_global = Global::Init();
+	m_scene = Scene::Init();
+}
+
+void Window::Log(string str)
+{
+	cout << str << endl;
+}
+
+void Window::KeyDown(Key key)
+{
+	Log(to_string((int)key));
+}
+
+void Window::KeyUp(Key key)
+{
+	Log(to_string((int)key));
 }

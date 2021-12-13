@@ -1,4 +1,5 @@
 #include "Transform.h"
+#include "GameObject.h"
 
 
 Transform::Transform(glm::vec3 localPosition, glm::vec3 localXYZAngle, glm::vec3 localScale, Transform* parent) :
@@ -17,7 +18,7 @@ Transform::Transform(glm::vec3 localPosition, glm::vec3 localXYZAngle, glm::vec3
 		worldTransformMat = glm::mat4(1.0f);
 	}
 }
-Transform* Transform::Root = new Transform(glm::vec3(0.0f), glm::vec3(0.0f), glm::vec3(1.0f), nullptr);
+Transform* Transform::Root = nullptr;
 
 glm::mat4 Transform::GetLocalTransformMat()
 {
@@ -35,6 +36,11 @@ glm::mat4 Transform::SetWorldTransformMat()
 glm::mat4 Transform::GetWorldToLocalMat()
 {
 	return glm::inverse(worldTransformMat);
+}
+
+glm::vec3 Transform::GetWordPosition()
+{
+	return glm::vec3(parent->worldTransformMat * glm::vec4(localPosition ,1.0f));
 }
 
 glm::mat4 Transform::GetLocalPositionMat()
@@ -109,4 +115,36 @@ glm::vec3 Transform::LocalDirToWorld(glm::vec3 LocalVec)
 	glm::mat3 worldToObject(GetWorldToLocalMat());
 	glm::vec3 worldVec = glm::transpose(worldToObject) * LocalVec;
 	return glm::normalize(worldVec);
+}
+
+void Transform::Updete()
+{
+	gameObject->Update();
+	for (vector<Transform*>::iterator iter = childs.begin(); iter != childs.end(); iter++)
+	{
+		(*iter)->Updete();
+	}
+}
+
+void Transform::LateUpdate()
+{
+	gameObject->LateUpdate();
+	for (vector<Transform*>::iterator iter = childs.begin(); iter != childs.end(); iter++)
+	{
+		(*iter)->LateUpdate();
+	}
+}
+
+void Transform::Render()
+{
+	gameObject->Render();
+	for (vector<Transform*>::iterator iter = childs.begin(); iter != childs.end(); iter++)
+	{
+		(*iter)->Render();
+	}
+}
+
+void Transform::SetGameObject(GameObject* go)
+{
+	gameObject = go;
 }

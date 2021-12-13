@@ -5,9 +5,12 @@
 #include <iostream>
 
 using namespace std;
-class Global;
+class Scene;
 class Time;
+class Input;
+enum class Key;
 void Resize(GLFWwindow* window, int width, int height);
+void mouseCallback(GLFWwindow* window, double xpos, double ypos);
 class Window
 {
 public:
@@ -15,17 +18,23 @@ public:
 	Window(int width, int height);
 
 	~Window();
-
-	void Input();
+	void InitEvent();
+	void InitInput();
+	void InitResource();
 	void Mainloop();
 	int Width, Height;
 	void SetDeltaTime(float time);
 	void SetStartTime(float time);
 	void SetCurTime(float time);
-	void InitGlobal();
-private:
+	void InitScene();
+	void Log(string str);
+
 	GLFWwindow* window_ptr;
-	Global* m_global;
+private:
+	void KeyDown(Key key);
+	void KeyUp(Key key);
+	Scene* m_scene;
+	Input* _input;
 };
 #endif
 

@@ -1,2 +1,147 @@
-﻿  Transform.cpp
-  OpenGLCsGame.vcxproj -> E:\OpenG\GLCS\OpenGLCsGame\x64\Debug\OpenGLCsGame.exe
+﻿  CameraComponent.cpp
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,14): error C2065: “shared_ptr”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,25): error C2275: “Component”: 将此类型用作表达式非法
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Component.h(6): message : 参见“Component”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,2): error C2974: 'std::map' : 模板 对于 '_Ty'是无效参数，应为类型
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\map(75): message : 参见“std::map”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,2): error C2976: “std::map”: 模板 参数太少
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\map(75): message : 参见“std::map”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,36): error C2059: 语法错误:“>”
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,48): error C2238: 意外的标记位于“;”之前
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(22,3): error C3861: “shared_ptr”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(22,3): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,15): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,31): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,31): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(24,15): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(24,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(26,26): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(26,26): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,4): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,4): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,15): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): error C2065: “t”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+  Component.cpp
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,14): error C2065: “shared_ptr”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,25): error C2275: “Component”: 将此类型用作表达式非法
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Component.h(6): message : 参见“Component”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,2): error C2974: 'std::map' : 模板 对于 '_Ty'是无效参数，应为类型
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\map(75): message : 参见“std::map”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,2): error C2976: “std::map”: 模板 参数太少
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\map(75): message : 参见“std::map”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,36): error C2059: 语法错误:“>”
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,48): error C2238: 意外的标记位于“;”之前
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(22,3): error C3861: “shared_ptr”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(22,3): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,15): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,31): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,31): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(24,15): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(24,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(26,26): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(26,26): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,4): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,4): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,15): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): error C2065: “t”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+  GameObject.cpp
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,14): error C2065: “shared_ptr”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,25): error C2275: “Component”: 将此类型用作表达式非法
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Component.h(6): message : 参见“Component”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,2): error C2974: 'std::map' : 模板 对于 '_Ty'是无效参数，应为类型
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\map(75): message : 参见“std::map”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,2): error C2976: “std::map”: 模板 参数太少
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\map(75): message : 参见“std::map”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,36): error C2059: 语法错误:“>”
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,48): error C2238: 意外的标记位于“;”之前
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(22,3): error C3861: “shared_ptr”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(22,3): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,15): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,31): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,31): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(24,15): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(24,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(26,26): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(26,26): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,4): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,4): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,15): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): error C2065: “t”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.cpp(13,17): error C2065: “Components”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.cpp(13,45): error C2065: “Components”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.cpp(22,17): error C2065: “Components”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.cpp(22,45): error C2065: “Components”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.cpp(30,17): error C2065: “Components”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.cpp(30,45): error C2065: “Components”: 未声明的标识符
+  Scene.cpp
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(26,18): error C2039: "SetNext": 不是 "std::shared_ptr<Component>" 的成员
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13): message : 参见“std::shared_ptr<Component>”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Scene.cpp(40): message : 查看对正在编译的函数 模板 实例化“T GameObject::AddComponent<CameraComponent>(void)”的引用
+          with
+          [
+              T=CameraComponent
+          ]
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,1): error C2440: “=”: 无法从“std::shared_ptr<T>”转换为“std::shared_ptr<Component> *”
+          with
+          [
+              T=CameraComponent
+          ]
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): message : 没有可用于执行该转换的用户定义的转换运算符，或者无法调用该运算符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,1): error C2440: “=”: 无法从“std::shared_ptr<T>”转换为“std::shared_ptr<Component> *”
+          with
+          [
+              T=CubeMeshComponent
+          ]
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): message : 没有可用于执行该转换的用户定义的转换运算符，或者无法调用该运算符
+  Transform.cpp
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,14): error C2065: “shared_ptr”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,25): error C2275: “Component”: 将此类型用作表达式非法
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Component.h(6): message : 参见“Component”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,2): error C2974: 'std::map' : 模板 对于 '_Ty'是无效参数，应为类型
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\map(75): message : 参见“std::map”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,2): error C2976: “std::map”: 模板 参数太少
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\map(75): message : 参见“std::map”的声明
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,36): error C2059: 语法错误:“>”
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(13,48): error C2238: 意外的标记位于“;”之前
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(22,3): error C3861: “shared_ptr”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(22,3): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,15): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,31): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(23,31): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(24,15): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(24,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(26,26): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(26,26): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,4): error C3861: “Components”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,4): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,15): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(30,31): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): error C2065: “t”: 未声明的标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): error C3861: “t”: 找不到标识符
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\GameObject.h(32,15): message : 此诊断出现在编译器生成的函数“T GameObject::AddComponent(void)”中
+  正在生成代码...

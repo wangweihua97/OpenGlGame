@@ -26,6 +26,7 @@ public:
 	glm::mat4 GetLocalTransformMat();
 	glm::mat4 SetWorldTransformMat();
 	glm::mat4 GetWorldToLocalMat();
+	glm::vec3 GetWordPosition();
 
 
 	glm::mat4 GetLocalPositionMat();
@@ -47,6 +48,11 @@ public:
 	glm::mat4 WorldMatToLocal(glm::mat4 worldMat);
 	glm::vec3 WorldDirToLocal(glm::vec3 worldVec);
 	glm::vec3 LocalDirToWorld(glm::vec3 LocalVec);
+	void Updete();
+	void LateUpdate();
+	void Render();
+	void SetGameObject(GameObject* go);
+
 
 private:
 	glm::vec3 m_forward; //Z

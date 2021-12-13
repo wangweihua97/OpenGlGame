@@ -19,6 +19,27 @@
     <Filter Include="头文件\Tool">
       <UniqueIdentifier>{99f6fdff-ca09-42e6-969f-266ebea985f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Component">
+      <UniqueIdentifier>{bba72775-46e1-4166-822d-8849561d00d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Component">
+      <UniqueIdentifier>{2cc4ba6f-3fa2-4b4f-b69d-12f582b05148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Event">
+      <UniqueIdentifier>{ddbb61e2-6839-4e12-9477-be292187c43b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Event">
+      <UniqueIdentifier>{67e872d6-0f01-484b-8f80-caa7197693cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\GameObjects">
+      <UniqueIdentifier>{b3f54329-cfa7-49f7-8f78-e0782e68cdc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\GameObjects">
+      <UniqueIdentifier>{163c6627-64e3-4a91-9796-1128b1a440b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\Shader">
+      <UniqueIdentifier>{2887c9ca-0c86-4dd5-8dee-080fa49dfc20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -45,20 +66,32 @@
     <ClInclude Include="GUID.h">
       <Filter>头文件\Tool</Filter>
     </ClInclude>
-    <ClInclude Include="Global.h">
+    <ClInclude Include="Scene.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="Component.h">
+      <Filter>头文件\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraComponent.h">
+      <Filter>头文件\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="EventCenter.h">
+      <Filter>头文件\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="CubeMeshComponent.h">
+      <Filter>头文件\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -94,20 +127,32 @@
     <ClCompile Include="GUID.cpp">
       <Filter>源文件\Tool</Filter>
     </ClCompile>
-    <ClCompile Include="Global.cpp">
+    <ClCompile Include="Scene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="Component.cpp">
+      <Filter>源文件\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraComponent.cpp">
+      <Filter>源文件\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="EventCenter.cpp">
+      <Filter>源文件\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="CubeMeshComponent.cpp">
+      <Filter>源文件\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

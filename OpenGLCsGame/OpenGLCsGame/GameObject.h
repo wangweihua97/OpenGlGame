@@ -9,28 +9,28 @@ class GameObject
 {
 public:
 	GameObject(string name, Transform* parent);
-	Transform transform;
-	map<string, Component> Components;
+	Transform* transform;
+	map<string, Component*> Components;
 	virtual void Update();
+	virtual void LateUpdate();
+	virtual void Render();
 	string name;
 
 	template<typename T>
 	T AddComponent()
 	{
-		T t(this);
-		Component component = t;
-		auto find = Components.find(component.GetName());
+		shared_ptr<T> t(new T(this));
+		auto find = Components.find(t->GetName());
 		if (find != Components.end())
 		{
-			find->second.SetNext(component);
+			find->second->SetNext(t);
 		}
 		else
 		{
-			Components[component.GetName()] = component;
+			Components[t->GetName()] = t;
 		}
-		return t;
+		return (T)(*t);
 	}
-	
 };
 #endif
 
