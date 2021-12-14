@@ -5,7 +5,6 @@
 
 CameraComponent::CameraComponent(GameObject* gameObject):Component(gameObject)
 {
-	SetName("CameraComponent");
 }
 
 glm::mat4 CameraComponent::GetPerspective()
@@ -15,8 +14,9 @@ glm::mat4 CameraComponent::GetPerspective()
 
 glm::mat4 CameraComponent::GetViewMatrix()
 {
-	;
-	return glm::lookAt(gameObject->transform->GetWordPosition(), gameObject->transform->GetWordForward() , gameObject->transform->GetWordUp());
+    //return glm::lookAt(gameObject->transform->GetWordPosition(), gameObject->transform->GetWordPosition() + gameObject->transform->GetWordForward() , gameObject->transform->GetWordUp());
+	return glm::lookAt(gameObject->transform->GetWordPosition(), gameObject->transform->GetWordPosition() + gameObject->transform->GetWordForward() , glm::vec3(0.0f,1.0f,0.0f));
+	//return glm::lookAt(glm::vec3(0.0f), glm::vec3(0.0f,0.0f,1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 void CameraComponent::Active()

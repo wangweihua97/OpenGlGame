@@ -17,19 +17,32 @@ public:
 	string name;
 
 	template<typename T>
-	T AddComponent()
+	T* AddComponent()
 	{
-		shared_ptr<T> t(new T(this));
-		auto find = Components.find(t->GetName());
+		T* t = new T(this);
+		Component* component = &(*t);
+		string name = typeid(T).name();
+		auto find = Components.find(name);
 		if (find != Components.end())
 		{
-			find->second->SetNext(t);
+			find->second->SetNext(component);
 		}
 		else
 		{
-			Components[t->GetName()] = t;
+			Components[name] = component;
 		}
-		return (T)(*t);
+		return t;
+	}
+	template<typename T>
+	T* GetComponent()
+	{
+		string name = typeid(T).name();
+		auto find = Components.find(name);
+		if (find != Components.end())
+		{
+			return find->second;
+		}
+		return nullptr;
 	}
 };
 #endif

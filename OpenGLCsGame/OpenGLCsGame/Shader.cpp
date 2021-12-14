@@ -13,7 +13,6 @@ Shader& Shader::Use()
 {
     glUseProgram(this->ID);
     unsigned int vboPV = glGetUniformBlockIndex(ID, "PV");
-
     glUniformBlockBinding(ID, vboPV, 0);
     return *this;
 }

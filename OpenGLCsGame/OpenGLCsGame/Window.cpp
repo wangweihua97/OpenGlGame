@@ -65,7 +65,9 @@ void Window::InitInput()
 
 void Window::InitResource()
 {
+	
 	ResourceManager::LoadShader("Shader/cube_vs.vs", "Shader/cube_fs.fs", nullptr, "CubeShader");
+	ResourceManager::LoadTexture("Texture/map.jpeg", false, "map");
 }
 
 void Resize(GLFWwindow* window, int width, int height)
@@ -82,7 +84,7 @@ void Resize(GLFWwindow* window, int width, int height)
 void mouseCallback(GLFWwindow* window, double xpos, double ypos)
 {
 	Input::xoffset = xpos - Input::xpos;
-	Input::yoffset = Input::ypos - ypos;
+	Input::yoffset = ypos - Input::ypos;
 
 	Input::xpos = xpos;
 	Input::ypos = ypos;
@@ -105,21 +107,15 @@ void Window::Mainloop()
 		float deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 		SetDeltaTime(deltaTime);
-
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		_input->Update();
 		//for each frame 
 
 		Scene::Instace->Update();
 		Scene::Instace->LateUpdate();
 		Scene::Instace->Render();
-
-
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
-
 		// all drawing goes here ..
-
-
 		glfwSwapBuffers(window_ptr);
 		glfwPollEvents();
 	}

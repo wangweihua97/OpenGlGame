@@ -25,6 +25,7 @@ public:
     static Shader    LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name);
     // retrieves a stored sader
     static Shader    GetShader(std::string name);
+    static Shader*    GetShaderP(std::string name);
     // loads (and generates) a texture from file
     static Texture2D LoadTexture(const char* file, bool alpha, std::string name);
     // retrieves a stored texture

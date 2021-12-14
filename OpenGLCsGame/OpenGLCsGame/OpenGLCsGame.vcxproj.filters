@@ -40,6 +40,12 @@
     <Filter Include="资源文件\Shader">
       <UniqueIdentifier>{2887c9ca-0c86-4dd5-8dee-080fa49dfc20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\struct">
+      <UniqueIdentifier>{7a28f4a7-866d-416a-842b-14119f2c9b15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\struct">
+      <UniqueIdentifier>{d65bcbeb-8ce2-4f62-9eb0-895093dee77f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -91,6 +97,15 @@
       <Filter>头文件\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="CubeMeshComponent.h">
+      <Filter>头文件\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveComponent.h">
+      <Filter>头文件\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshComponent.h">
+      <Filter>头文件\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h">
       <Filter>头文件\Component</Filter>
     </ClInclude>
   </ItemGroup>
@@ -154,5 +169,22 @@
     <ClCompile Include="CubeMeshComponent.cpp">
       <Filter>源文件\Component</Filter>
     </ClCompile>
+    <ClCompile Include="MoveComponent.cpp">
+      <Filter>源文件\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshComponent.cpp">
+      <Filter>源文件\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>源文件\Component</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader\cube_fs.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\cube_vs.vs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

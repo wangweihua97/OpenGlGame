@@ -36,6 +36,9 @@ public:
 	glm::vec3 GetWordForward();
 	glm::vec3 GetWordRight();
 	glm::vec3 GetWordUp();
+	glm::vec3 GetLocalForward();
+	glm::vec3 GetLocalRight();
+	glm::vec3 GetLocalUp();
 
 	void SetLocalForward(glm::vec3 forward);
 	void SetLocalRight(glm::vec3 right);
