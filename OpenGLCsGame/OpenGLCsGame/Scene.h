@@ -7,13 +7,6 @@ using namespace std;
 class Transform;
 class GameObject;
 class CameraComponent;
-struct Light
-{
-	glm::vec3 lightDir;
-	glm::vec3 color;
-	glm::vec3 ambient;
-	float gloss;
-};
 class Scene
 {
 private:
@@ -26,7 +19,7 @@ private:
 public:
 	 GameObject* player;
 	 GameObject* cube;
-	 Light light;
+	 glm::mat4 light;
 	static Scene* Instace;
 	void Update();
 	void LateUpdate();

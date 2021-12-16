@@ -13,10 +13,9 @@ Scene* Scene::Instace = nullptr;
 Scene::Scene()
 {
 	Scene::Instace = this;
-	light.lightDir = glm::normalize(glm::vec3(0.0f, -1.0f, 1.5f));
-	light.color = glm::vec3(1.0f);
-	light.ambient = glm::vec3(0.0f,0.0f,0.0f);
-	light.gloss = 5.0f;
+	light[0] = glm::vec4(glm::normalize(glm::vec3(0.0f, -1.0f, 1.5f)),1.0f);
+	light[1] = glm::vec4(glm::vec3(3.0f) ,1.0f);
+	light[2] = glm::vec4(glm::vec3(0.1f), 1.0f);
 
 	glGenBuffers(1, &_uboPV);
 	glBindBuffer(GL_UNIFORM_BUFFER, _uboPV);
@@ -27,9 +26,9 @@ Scene::Scene()
 
 	glGenBuffers(1, &_uboBaseLight);
 	glBindBuffer(GL_UNIFORM_BUFFER, _uboBaseLight);
-	glBufferData(GL_UNIFORM_BUFFER,sizeof(Light), &light, GL_STATIC_DRAW);
+	glBufferData(GL_UNIFORM_BUFFER,sizeof(glm::mat4), glm::value_ptr(light), GL_STATIC_DRAW);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
-	glBindBufferRange(GL_UNIFORM_BUFFER, 1, _uboBaseLight, 0, sizeof(Light));
+	glBindBufferRange(GL_UNIFORM_BUFFER, 1, _uboBaseLight, 0, sizeof(light));
 
 	glGenBuffers(1, &_uboBaseView);
 	glBindBuffer(GL_UNIFORM_BUFFER, _uboBaseView);

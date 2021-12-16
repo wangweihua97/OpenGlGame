@@ -15,10 +15,9 @@ uniform sampler2D roughnessMap;
 
 layout(std140 , binding = 1) uniform BaseLight
 {
-	vec3 lightDir;
-	vec3 color;
-	vec3 ambient;
-    float gloss;
+	vec4 lightDir;
+	vec4 color;
+	vec4 ambient;
 };
 layout(std140 , binding = 2) uniform BaseView
 {
@@ -105,12 +104,12 @@ void main()
 
     // reflectance equation
     vec3 Lo = vec3(0.0);
-    vec3 L = normalize(-lightDir);
+    vec3 L = normalize(-lightDir.xyz);
         vec3 H = normalize(V + L);
         //float distance = length(lightPositions[i] - WorldPos);
         //float attenuation = 1.0 / (distance * distance);
         float attenuation = 1.0;
-        vec3 radiance = color * attenuation;
+        vec3 radiance = color.xyz * attenuation;
         
         // Cook-Torrance BRDF
         float NDF = DistributionGGX(N, H, roughness);   
@@ -140,7 +139,7 @@ void main()
     
     // ambient lighting (note that the next IBL tutorial will replace 
     // this ambient lighting with environment lighting).
-    vec3 ambient2 = vec3(0.03) * albedo * ao;
+    vec3 ambient2 = ambient.xyz * albedo * ao;
     
     vec3 color2 = ambient2 + Lo;
 
