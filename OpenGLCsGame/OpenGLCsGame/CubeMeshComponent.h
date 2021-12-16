@@ -10,7 +10,7 @@ public:
 	unsigned int cubeVBO;
 	float* cubeVertices;
 	CubeMeshComponent(GameObject* gameObject);
-	void SetShader(Shader& shader);
+	void SetShader(Shader* shader);
 	void SetBound(float length, float width, float height);
 	void Update()override;
 	void LateUpdate()override;

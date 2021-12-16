@@ -11,6 +11,7 @@ class Input;
 enum class Key;
 void Resize(GLFWwindow* window, int width, int height);
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);
+void stbi_set_flip_vertically_on_load2(bool b);
 class Window
 {
 public:

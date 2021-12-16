@@ -5,6 +5,7 @@
 #include "EventCenter.h"
 #include "ResourceManager.h"
 #include <boost/bind/bind.hpp>
+#include <stb_image.h>
 Window* Window::Instance = NULL;
 Window::Window(int width, int height)
 {
@@ -67,6 +68,7 @@ void Window::InitResource()
 {
 	
 	ResourceManager::LoadShader("Shader/cube_vs.vs", "Shader/cube_fs.fs", nullptr, "CubeShader");
+	ResourceManager::LoadShader("Shader/model.vs", "Shader/model.fs", nullptr, "ModelShader");
 	ResourceManager::LoadTexture("Texture/map.jpeg", false, "map");
 }
 
@@ -92,6 +94,11 @@ void mouseCallback(GLFWwindow* window, double xpos, double ypos)
 
 void Window::Mainloop()
 {
+	
+	// tell stb_image.h to flip loaded texture's on the y-axis (before loading model).
+	stbi_set_flip_vertically_on_load2(true);
+	glEnable(GL_DEPTH_TEST);
+
 	InitResource();
 	InitEvent();
 	InitInput();
@@ -154,4 +161,9 @@ void Window::KeyDown(Key key)
 void Window::KeyUp(Key key)
 {
 	Log(to_string((int)key));
+}
+
+void stbi_set_flip_vertically_on_load2(bool b)
+{
+	stbi_set_flip_vertically_on_load(b);
 }

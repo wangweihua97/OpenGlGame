@@ -21,7 +21,7 @@ glm::mat4 CameraComponent::GetViewMatrix()
 
 void CameraComponent::Active()
 {
-	Scene::MainCamera = this;
+	Scene::Instace->MainCamera = this;
 }
 
 void CameraComponent::Update()

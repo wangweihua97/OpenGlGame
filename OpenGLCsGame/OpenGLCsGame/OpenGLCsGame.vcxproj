@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -146,7 +146,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="Component.h" />
@@ -154,7 +153,8 @@
     <ClInclude Include="EventCenter.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="MeshComponent.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="ModelComponent.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="GUID.h" />
@@ -171,7 +171,6 @@
     <ResourceCompile Include="OpenGLCsGame.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="C:\OpenGL\OPGL\glad\src\glad.c" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
@@ -180,7 +179,8 @@
     <ClCompile Include="EventCenter.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="MeshComponent.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="GUID.cpp" />
@@ -196,6 +196,10 @@
   <ItemGroup>
     <None Include="Shader\cube_fs.fs" />
     <None Include="Shader\cube_vs.vs" />
+    <None Include="Shader\model.fs" />
+    <None Include="Shader\model.vs" />
+    <None Include="Shader\specularShadow.fs" />
+    <None Include="Shader\specularShadow.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

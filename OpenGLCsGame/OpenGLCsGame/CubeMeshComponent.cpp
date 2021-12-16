@@ -6,9 +6,9 @@ CubeMeshComponent::CubeMeshComponent(GameObject* gameObject) :Component(gameObje
 {
 }
 
-void CubeMeshComponent::SetShader(Shader& shader)
+void CubeMeshComponent::SetShader(Shader* shader)
 {
-    _shader = &shader;
+    _shader = shader;
 }
 
 void CubeMeshComponent::SetBound(float length, float width, float height)
@@ -78,18 +78,27 @@ void CubeMeshComponent::SetBound(float length, float width, float height)
 
 void CubeMeshComponent::Update()
 {
+    __super::Update();
 }
 
 void CubeMeshComponent::LateUpdate()
 {
+    __super::LateUpdate();
 }
 
 void CubeMeshComponent::Render()
 {
+    _shader->Use();
     glm::mat4 a = gameObject->transform->worldTransformMat;
-    ResourceManager::GetShader("CubeShader").SetMatrix4("model", a ,true);
+    _shader->SetMatrix4("model", a ,true);
    
+    glUniform1i(glGetUniformLocation(_shader->ID, "albedoMap"), 0);
+    // and finally bind the texture
+    glBindTexture(GL_TEXTURE_2D, ResourceManager::GetTexture("map").ID);
+
     glBindVertexArray(cubeVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
+
+    __super::Render();
 }

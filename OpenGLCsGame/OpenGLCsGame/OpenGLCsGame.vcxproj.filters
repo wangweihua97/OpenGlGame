@@ -46,6 +46,12 @@
     <Filter Include="源文件\struct">
       <UniqueIdentifier>{d65bcbeb-8ce2-4f62-9eb0-895093dee77f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Mesh">
+      <UniqueIdentifier>{84af4b37-d88b-44bf-8b0b-929ad07133d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Mesh">
+      <UniqueIdentifier>{4bab91fa-ede1-4fe3-88a2-3468b1cf79e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -102,10 +108,10 @@
     <ClInclude Include="MoveComponent.h">
       <Filter>头文件\Component</Filter>
     </ClInclude>
-    <ClInclude Include="MeshComponent.h">
-      <Filter>头文件\Component</Filter>
+    <ClInclude Include="Mesh.h">
+      <Filter>头文件\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationComponent.h">
+    <ClInclude Include="ModelComponent.h">
       <Filter>头文件\Component</Filter>
     </ClInclude>
   </ItemGroup>
@@ -172,10 +178,10 @@
     <ClCompile Include="MoveComponent.cpp">
       <Filter>源文件\Component</Filter>
     </ClCompile>
-    <ClCompile Include="MeshComponent.cpp">
-      <Filter>源文件\Component</Filter>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>源文件\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationComponent.cpp">
+    <ClCompile Include="ModelComponent.cpp">
       <Filter>源文件\Component</Filter>
     </ClCompile>
   </ItemGroup>
@@ -184,6 +190,18 @@
       <Filter>资源文件</Filter>
     </None>
     <None Include="Shader\cube_vs.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\model.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\model.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\specularShadow.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\specularShadow.vs">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>

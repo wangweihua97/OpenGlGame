@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-
+#include <boost/filesystem.hpp>
 #include <glad/glad.h>
 
 #include "Texture.h"
@@ -21,6 +21,7 @@ public:
     // resource storage
     static std::map<std::string, Shader>    Shaders;
     static std::map<std::string, Texture2D> Textures;
+    static bool IsFileExistent(const boost::filesystem::path& path);
     // loads (and generates) a shader program from file loading vertex, fragment (and geometry) shader's source code. If gShaderFile is not nullptr, it also loads a geometry shader
     static Shader    LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name);
     // retrieves a stored sader
@@ -28,8 +29,11 @@ public:
     static Shader*    GetShaderP(std::string name);
     // loads (and generates) a texture from file
     static Texture2D LoadTexture(const char* file, bool alpha, std::string name);
+    static Texture2D LoadTexture(const char* file, std::string name);
     // retrieves a stored texture
     static Texture2D GetTexture(std::string name);
+    static Texture2D* GetTextureP(std::string name);
+    static bool HaveTexture(std::string name);
     // properly de-allocates all loaded resources
     static void      Clear();
 private:
@@ -38,7 +42,8 @@ private:
     // loads and generates a shader from file
     static Shader    loadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile = nullptr);
     // loads a single texture from file
-    static Texture2D loadTextureFromFile(const char* file, bool alpha);
+//    static Texture2D loadTextureFromFile(const char* file, bool alpha);
+    static Texture2D loadTextureFromFile(const char* file);
 };
 
 #endif

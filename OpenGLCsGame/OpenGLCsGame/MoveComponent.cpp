@@ -23,8 +23,8 @@ void MoveComponent::Update()
 	gameObject->transform->localPosition = position;
 
 	glm::vec3 rotate = gameObject->transform->localXYZAngle;
-	rotate.x = (Input::ypos - (float)Window::Instance->Height/2) / (float)Window::Instance->Height * 180.0f;
-	rotate.y = -(Input::xpos - (float)Window::Instance->Width/2)/ (float)Window::Instance->Width * 180.0f;
+	rotate.x = (Input::ypos - (float)Window::Instance->Height/2) / (float)Window::Instance->Height * 179.0f;
+	rotate.y = -(Input::xpos - (float)Window::Instance->Width/2)/ (float)Window::Instance->Width * 359.0f;
 	/*rotate.x += Input::yoffset * cameraSense;
 	rotate.y -= Input::xoffset * cameraSense;*/
 	gameObject->transform->localXYZAngle = rotate;
