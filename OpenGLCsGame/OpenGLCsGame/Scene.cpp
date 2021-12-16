@@ -61,7 +61,13 @@ Scene::Scene()
 	c->transform->localScale = glm::vec3(0.1f, 0.1f, 0.1f);
 	ModelComponent* model = c->AddComponent<ModelComponent>();
 	model->LoadModel(ResourceManager::GetShaderP("ModelShader") ,"Model/swat/Swat.fbx" ,false);
-	Gos.push_back(c);
+
+	GameObject* d = new GameObject("zombie", Transform::Root);
+	d->transform->localPosition = glm::vec3(10.0f, 0.5f, 0.0f);
+	d->transform->localScale = glm::vec3(0.1f, 0.1f, 0.1f);
+	ModelComponent* model_d = d->AddComponent<ModelComponent>();
+	model_d->LoadModel(ResourceManager::GetShaderP("SkeletonModelShader"), "Model/zombieWalk/scene.gltf", false);
+	model_d->InitAnimation();
 }
 
 Scene* Scene::Init()

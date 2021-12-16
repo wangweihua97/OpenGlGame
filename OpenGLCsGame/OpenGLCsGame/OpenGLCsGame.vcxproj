@@ -198,6 +198,8 @@
     <None Include="Shader\cube_vs.vs" />
     <None Include="Shader\model.fs" />
     <None Include="Shader\model.vs" />
+    <None Include="Shader\skeleton_model.fs" />
+    <None Include="Shader\skeleton_model.vs" />
     <None Include="Shader\specularShadow.fs" />
     <None Include="Shader\specularShadow.vs" />
   </ItemGroup>

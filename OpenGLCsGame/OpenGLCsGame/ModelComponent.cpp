@@ -6,6 +6,7 @@
 ModelComponent::ModelComponent(GameObject* gameObject) :Component(gameObject)
 {
     _isPlay = false;
+    _meshIndex = 0;
 }
 
 void ModelComponent::Update()
@@ -141,16 +142,15 @@ void ModelComponent::processNode(aiNode* node, glm::mat4 parentTransfrom)
         LoadBones(i, mesh, Bones, baseVertex);
         meshes.push_back(processMesh(i, mesh));
     }*/
-    static unsigned int k = 0;
     aiMatrix4x4 a = node->mTransformation;
     glm::mat4 nodeTransform = parentTransfrom * glm::transpose(glm::make_mat4(&a.a1));
 
     for (unsigned int i = 0; i < node->mNumMeshes; i++) {
         cout << node->mName.data << endl;
         aiMesh* mesh = pScene->mMeshes[node->mMeshes[i]];
-        LoadBones(k, mesh, Bones, baseVertex, nodeTransform);
-        meshes.push_back(processMesh(k, mesh));
-        k++;
+        LoadBones(_meshIndex, mesh, Bones, baseVertex, nodeTransform);
+        meshes.push_back(processMesh(_meshIndex, mesh));
+        _meshIndex++;
     }
 
     for (unsigned int i = 0; i < node->mNumChildren; i++) {
@@ -343,7 +343,7 @@ void ModelComponent::LoadBones(unsigned int MeshIndex, const aiMesh* pMesh, std:
         auto Offset = pMesh->mBones[i]->mOffsetMatrix;
         // Obtains the offset matrix which transforms the bone from mesh space into bone space. 
         m_BoneInfo[BoneIndex].SetBoneOffset(glm::transpose(glm::make_mat4(&Offset.a1)));
-        boneOffsets[MeshIndex][BoneIndex] = glm::transpose(glm::make_mat4(&Offset.a1));
+        //boneOffsets[MeshIndex][BoneIndex] = glm::transpose(glm::make_mat4(&Offset.a1));
 
         // Iterate over all the affected vertices by this bone i.e weights. 
         for (unsigned int j = 0; j < pMesh->mBones[i]->mNumWeights; j++) {

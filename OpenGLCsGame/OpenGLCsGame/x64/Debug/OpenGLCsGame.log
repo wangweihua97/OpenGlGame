@@ -1,2 +1,10 @@
 ﻿  Scene.cpp
+  Window.cpp
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(89,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(90,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(92,16): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(93,16): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(107,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(113,29): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  正在生成代码...
   OpenGLCsGame.vcxproj -> E:\OpenG\GLCS\OpenGLCsGame\x64\Debug\OpenGLCsGame.exe

@@ -74,6 +74,7 @@ private:
     unsigned int FindTranslation(float AnimationTime, const aiNodeAnim* pNodeAnim); // Finds a translation key given the current animation time. 
 
     void ReadNodeHierarchy(float AnimationTime, const aiNode* pNode, const glm::mat4& ParentTransform);
+    int _meshIndex;
 };
 #endif
 

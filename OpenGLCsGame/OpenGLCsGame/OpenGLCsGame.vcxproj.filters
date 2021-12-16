@@ -204,5 +204,11 @@
     <None Include="Shader\specularShadow.vs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="Shader\skeleton_model.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\skeleton_model.vs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

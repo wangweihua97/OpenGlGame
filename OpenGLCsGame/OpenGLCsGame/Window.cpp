@@ -69,6 +69,7 @@ void Window::InitResource()
 	
 	ResourceManager::LoadShader("Shader/cube_vs.vs", "Shader/cube_fs.fs", nullptr, "CubeShader");
 	ResourceManager::LoadShader("Shader/model.vs", "Shader/model.fs", nullptr, "ModelShader");
+	ResourceManager::LoadShader("Shader/skeleton_model.vs", "Shader/skeleton_model.fs", nullptr, "SkeletonModelShader");
 	ResourceManager::LoadTexture("Texture/map.jpeg", false, "map");
 }
 
