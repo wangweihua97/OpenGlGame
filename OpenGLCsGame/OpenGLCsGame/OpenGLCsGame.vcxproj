@@ -196,6 +196,10 @@
   <ItemGroup>
     <None Include="Shader\cube_fs.fs" />
     <None Include="Shader\cube_vs.vs" />
+    <None Include="Shader\gBuffer.fs" />
+    <None Include="Shader\gBuffer.vs" />
+    <None Include="Shader\g_skeleton_model.fs" />
+    <None Include="Shader\g_skeleton_model.vs" />
     <None Include="Shader\model.fs" />
     <None Include="Shader\model.vs" />
     <None Include="Shader\skeleton_model.fs" />

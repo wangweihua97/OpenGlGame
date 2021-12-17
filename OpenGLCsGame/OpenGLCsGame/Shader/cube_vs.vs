@@ -7,11 +7,13 @@ layout(std140 , binding = 0) uniform PV
 	mat4 view;
 };
 out vec2 TexCoord;
+out vec3 WorldPos;
 
 uniform mat4 model;
 
 void main()
 {
 	gl_Position = projection * view * model * vec4(aPos, 1.0);
+	WorldPos = gl_Position.rgb;
 	TexCoord = vec2(aTexCoord.x, aTexCoord.y);
 }

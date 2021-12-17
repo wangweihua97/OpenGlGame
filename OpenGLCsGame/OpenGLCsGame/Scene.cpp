@@ -55,11 +55,11 @@ Scene::Scene()
 	cubeMeshComponent->SetShader(ResourceManager::GetShaderP("CubeShader"));
 	cubeMeshComponent->SetBound(100.0f, 0.2f, 100.0f);
 
-	GameObject* c = new GameObject("swat", Transform::Root);
+	/*GameObject* c = new GameObject("swat", Transform::Root);
 	c->transform->localPosition = glm::vec3(0.0f, 0.5f, 0.0f);
 	c->transform->localScale = glm::vec3(0.1f, 0.1f, 0.1f);
 	ModelComponent* model = c->AddComponent<ModelComponent>();
-	model->LoadModel(ResourceManager::GetShaderP("ModelShader") ,"Model/swat/Swat.fbx" ,false);
+	model->LoadModel(ResourceManager::GetShaderP("ModelShader") ,"Model/swat/Swat.fbx" ,false);*/
 
 	GameObject* d = new GameObject("zombie", Transform::Root);
 	d->transform->localPosition = glm::vec3(10.0f, 0.5f, 0.0f);
@@ -67,6 +67,13 @@ Scene::Scene()
 	ModelComponent* model_d = d->AddComponent<ModelComponent>();
 	model_d->LoadModel(ResourceManager::GetShaderP("SkeletonModelShader"), "Model/zombieWalk/scene.gltf", false);
 	model_d->InitAnimation();
+
+	GameObject* e = new GameObject("Gun", Transform::Root);
+	e->transform->localPosition = glm::vec3(20.0f, 15.0f, 0.0f);
+	e->transform->localScale = glm::vec3(10.0f);
+	ModelComponent* model_e = e->AddComponent<ModelComponent>();
+	model_e->LoadModel(ResourceManager::GetShaderP("SkeletonModelShader"), "Model/machinegun/scene.gltf", false);
+	model_e->InitAnimation();
 }
 
 Scene* Scene::Init()

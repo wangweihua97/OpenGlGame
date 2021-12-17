@@ -1,0 +1,11 @@
+Model Information:
+* title:	First Person CSO Coil MachineGun
+* source:	https://sketchfab.com/3d-models/first-person-cso-coil-machinegun-ee8fc799ec284524ac998e0a22e43951
+* author:	Amine.Elouneg (https://sketchfab.com/Amine.Elouneg)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "First Person CSO Coil MachineGun" (https://sketchfab.com/3d-models/first-person-cso-coil-machinegun-ee8fc799ec284524ac998e0a22e43951) by Amine.Elouneg (https://sketchfab.com/Amine.Elouneg) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

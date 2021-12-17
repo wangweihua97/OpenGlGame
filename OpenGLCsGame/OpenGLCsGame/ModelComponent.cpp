@@ -11,15 +11,6 @@ ModelComponent::ModelComponent(GameObject* gameObject) :Component(gameObject)
 
 void ModelComponent::Update()
 {
-    if (_isPlay)
-    {
-        animationTime += Time::GetDeltaTime();
-        vector<glm::mat4> Transforms;
-        BoneTransform(animationTime, Transforms);
-        for (unsigned int i = 0; i < Transforms.size(); i++) {
-            SetBoneTransform(i, Transforms[i]);
-        }
-    }
 	__super::Update();
 }
 
@@ -32,6 +23,15 @@ void ModelComponent::Render()
 {
     glm::mat4 model = gameObject->transform->worldTransformMat;
     m_pShaderProg->SetMatrix4("model", model, true);
+    if (_isPlay)
+    {
+        animationTime += Time::GetDeltaTime();
+        vector<glm::mat4> Transforms;
+        BoneTransform(animationTime, Transforms);
+        for (unsigned int i = 0; i < Transforms.size(); i++) {
+            SetBoneTransform(i, Transforms[i]);
+        }
+    }
     Draw();
 	__super::Render();
 }
@@ -83,7 +83,7 @@ void ModelComponent::LoadModel(Shader* shader, string const& path, bool gamma = 
 void ModelComponent::Draw()
 {
     for (unsigned int i = 0; i < meshes.size(); i++)
-        meshes[i].Draw(*m_pShaderProg);
+        meshes[i].Draw();
 }
 
 void ModelComponent::loadModel(string path)

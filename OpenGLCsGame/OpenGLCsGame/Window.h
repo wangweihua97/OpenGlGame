@@ -8,6 +8,7 @@ using namespace std;
 class Scene;
 class Time;
 class Input;
+class Shader;
 enum class Key;
 void Resize(GLFWwindow* window, int width, int height);
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);
@@ -23,19 +24,31 @@ public:
 	void InitInput();
 	void InitResource();
 	void Mainloop();
+	void InitGbuffer();
 	int Width, Height;
 	void SetDeltaTime(float time);
 	void SetStartTime(float time);
 	void SetCurTime(float time);
 	void InitScene();
+	void renderQuad();
 	void Log(string str);
+	unsigned int gBuffer;
+	unsigned int g_positionMap;
+	unsigned int g_albedoMap;
+	unsigned int g_specularMap;
+	unsigned int g_normalMap;
+	unsigned int g_height_ao_metallic_roughnessMap;
+	unsigned int rboDepth;
 
+	unsigned int quadVAO = 0;
+	unsigned int quadVBO;
 	GLFWwindow* window_ptr;
 private:
 	void KeyDown(Key key);
 	void KeyUp(Key key);
 	Scene* m_scene;
 	Input* _input;
+	Shader* _gBufferShader;
 };
 #endif
 

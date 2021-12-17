@@ -210,5 +210,17 @@
     <None Include="Shader\skeleton_model.vs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="Shader\g_skeleton_model.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\g_skeleton_model.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\gBuffer.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\gBuffer.vs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

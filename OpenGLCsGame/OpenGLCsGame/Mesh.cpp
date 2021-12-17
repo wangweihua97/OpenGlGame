@@ -76,7 +76,7 @@ void Mesh::setupMesh(vector<VertexBoneData>& Bones)
 
     
 }
-void Mesh::Draw(Shader& shader)
+void Mesh::Draw()
 {
     /*auto iter = m_boneOffsets.begin();
     while (iter != m_boneOffsets.end()) {
@@ -85,13 +85,13 @@ void Mesh::Draw(Shader& shader)
         iter++;
     }*/
     // bind appropriate textures
-    unsigned int diffuseNr = 0;
-    unsigned int specularNr = 0;
-    unsigned int normalNr = 0;
-    unsigned int heightNr = 0;
-    unsigned int aoNr = 0;
-    unsigned int metallicNr = 0;
-    unsigned int roughnessNr = 0;
+    float diffuseNr = 0.0f;
+    float specularNr = 0.0f;
+    float normalNr = 0.0f;
+    float heightNr = 0.0f;
+    float aoNr = 0.0f;
+    float metallicNr = 0.0f;
+    float roughnessNr = 0.0f;
     for (unsigned int i = 0; i < textures.size(); i++)
     {
         glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
@@ -99,29 +99,31 @@ void Mesh::Draw(Shader& shader)
         string number;
         string name = textures[i].type;
         if (name == "albedoMap")
-        {
-            number = std::to_string(diffuseNr++);
-            //cout << "+++++++++++" << textures[i].path << endl;
-        }
+            diffuseNr = 1.0f;
         else if (name == "specularMap")
-            number = std::to_string(specularNr++); // transfer unsigned int to stream
+            specularNr = 1.0f; // transfer unsigned int to stream
         else if (name == "normalMap")
-            number = std::to_string(normalNr++); // transfer unsigned int to stream
+            normalNr = 1.0f; // transfer unsigned int to stream
         else if (name == "heightMap")
-            number = std::to_string(heightNr++); // transfer unsigned int to stream
+            heightNr = 1.0f; // transfer unsigned int to stream
         else if (name == "aoMap")
-            number = std::to_string(aoNr++); // transfer unsigned int to stream
+            aoNr = 1.0f; // transfer unsigned int to stream
         else if (name == "metallicMap")
-            number = std::to_string(metallicNr++); // transfer unsigned int to stream
+            metallicNr = 1.0f; // transfer unsigned int to stream
         else if (name == "roughnessMap")
-            number = std::to_string(roughnessNr++);
-
-        string a = number.compare("0") == 0 ? name : name + number;
+            roughnessNr = 1.0f;
         // now set the sampler to the correct texture unit
-        glUniform1i(glGetUniformLocation(m_pShaderProg->ID, a.c_str()), i);
+        glUniform1i(glGetUniformLocation(m_pShaderProg->ID, name.c_str()), i);
         // and finally bind the texture
         glBindTexture(GL_TEXTURE_2D, textures[i].texture2D->ID);
     }
+    m_pShaderProg->SetFloat("use_albedoMap", diffuseNr, false);
+    m_pShaderProg->SetFloat("use_specularMap", specularNr, false);
+    m_pShaderProg->SetFloat("use_normalMap", normalNr, false);
+    m_pShaderProg->SetFloat("use_heightMap", heightNr, false);
+    m_pShaderProg->SetFloat("use_aoMap", aoNr, false);
+    m_pShaderProg->SetFloat("metallicMap", metallicNr, false);
+    m_pShaderProg->SetFloat("roughnessMap", roughnessNr, false);
     // draw mesh
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
