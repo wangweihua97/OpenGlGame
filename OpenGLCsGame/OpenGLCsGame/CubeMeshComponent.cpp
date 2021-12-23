@@ -13,7 +13,7 @@ void CubeMeshComponent::SetShader(Shader* shader)
 
 void CubeMeshComponent::SetBound(float length, float width, float height)
 {
-    ResourceManager::GetShader("CubeShader").Use();
+    _shader->Use();
     gameObject->transform->localScale = glm::vec3(length , width ,height);
     float v[]{
         // positions          // texture Coords
@@ -71,9 +71,9 @@ void CubeMeshComponent::SetBound(float length, float width, float height)
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    glUniform1i(glGetUniformLocation(ResourceManager::GetShader("CubeShader").ID, "albedoMap"), 0);
-    // and finally bind the texture
-    glBindTexture(GL_TEXTURE_2D, ResourceManager::GetTexture("map").ID);
+    //glUniform1i(glGetUniformLocation(ResourceManager::GetShader("CubeShader").ID, "albedoMap"), 0);
+    //// and finally bind the texture
+    //glBindTexture(GL_TEXTURE_2D, ResourceManager::GetTexture("map").ID);
 }
 
 void CubeMeshComponent::Update()
@@ -91,7 +91,7 @@ void CubeMeshComponent::Render()
     _shader->Use();
     glm::mat4 a = gameObject->transform->worldTransformMat;
     _shader->SetMatrix4("model", a ,true);
-   
+    glActiveTexture(GL_TEXTURE0);
     glUniform1i(glGetUniformLocation(_shader->ID, "albedoMap"), 0);
     // and finally bind the texture
     glBindTexture(GL_TEXTURE_2D, ResourceManager::GetTexture("map").ID);

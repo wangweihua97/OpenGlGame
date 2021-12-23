@@ -222,5 +222,32 @@
     <None Include="Shader\gBuffer.vs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="Shader\gBufferCommon.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\gBufferCommon.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\readSkyBox.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\readSkyBox.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\skyBox.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\skyBox.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\volume.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\volume.geom">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\volume.vert">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

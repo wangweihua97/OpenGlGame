@@ -13,7 +13,8 @@ uniform mat4 model;
 
 void main()
 {
-	gl_Position = projection * view * model * vec4(aPos, 1.0);
-	WorldPos = gl_Position.rgb;
+    vec4 world = vec4(aPos, 1.0);
+	gl_Position = projection * view * model * world;
+	WorldPos = world.xyz;
 	TexCoord = vec2(aTexCoord.x, aTexCoord.y);
 }

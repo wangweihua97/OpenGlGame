@@ -92,7 +92,8 @@ void main()
     float ao        = texture(gHeightAoMetallicRoughnessMap, TexCoords).g;
     vec3 WorldPos = texture(gPosition, TexCoords).rgb;
 
-    vec3 N = getNormalFromMap();
+    //vec3 N = getNormalFromMap();
+    vec3 N = texture(gNormalMap, TexCoords).xyz;
     vec3 V = normalize(viewPos - WorldPos);
 
     // calculate reflectance at normal incidence; if dia-electric (like plastic) use F0 
@@ -142,8 +143,8 @@ void main()
     vec3 color2 = ambient2 + Lo;
 
     // HDR tonemapping
-    color2 = color2 / (color2 + vec3(1.0));
+    //color2 = color2 / (color2 + vec3(1.0));
     // gamma correct
-    color2 = pow(color2, vec3(1.0/2.2));
+    //color2 = pow(color2, vec3(1.0/2.2));
     FragColor = vec4(color2, 1.0);
 }

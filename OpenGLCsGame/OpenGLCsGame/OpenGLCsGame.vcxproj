@@ -198,14 +198,23 @@
     <None Include="Shader\cube_vs.vs" />
     <None Include="Shader\gBuffer.fs" />
     <None Include="Shader\gBuffer.vs" />
+    <None Include="Shader\gBufferCommon.fs" />
+    <None Include="Shader\gBufferCommon.vs" />
     <None Include="Shader\g_skeleton_model.fs" />
     <None Include="Shader\g_skeleton_model.vs" />
     <None Include="Shader\model.fs" />
     <None Include="Shader\model.vs" />
     <None Include="Shader\skeleton_model.fs" />
     <None Include="Shader\skeleton_model.vs" />
+    <None Include="Shader\readSkyBox.fs" />
+    <None Include="Shader\readSkyBox.vs" />
+    <None Include="Shader\skyBox.fs" />
+    <None Include="Shader\skyBox.vs" />
     <None Include="Shader\specularShadow.fs" />
     <None Include="Shader\specularShadow.vs" />
+    <None Include="Shader\volume.frag" />
+    <None Include="Shader\volume.geom" />
+    <None Include="Shader\volume.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

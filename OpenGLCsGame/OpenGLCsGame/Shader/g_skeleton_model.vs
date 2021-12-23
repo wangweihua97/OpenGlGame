@@ -10,6 +10,7 @@ layout (location = 6) in vec4 Weights;
 out vec2 TexCoords;
 out vec3 WorldPos;
 out vec3 Normal;
+out mat4 ModelMat;
 
 layout(std140 , binding = 0) uniform PV
 {
@@ -31,7 +32,9 @@ void main()
 	vec4 tPos = BoneTransform * vec4(aPos, 1.0);
     TexCoords = aTexCoords;
     WorldPos = vec3(model * tPos);
-    Normal = mat3(model) * aNormal;   
+    Normal = normalize(mat3(transpose(inverse(model))) * aNormal);
+    //Normal = mat3(model) * aNormal;   
+    ModelMat = model;
 
     //gl_Position =  projection * view * vec4(WorldPos, 1.0);
     gl_Position =  projection * view * model * tPos;

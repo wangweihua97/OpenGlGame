@@ -32,6 +32,17 @@ public:
 	void InitScene();
 	void renderQuad();
 	void Log(string str);
+	void InitSkyBox();
+	void RenderCube();
+	void RenderSkyBox();
+
+	unsigned int envCubemap;
+	unsigned int cubeVAO = 0;
+	unsigned int cubeVBO = 0;
+
+	unsigned int captureFBO;
+	unsigned int captureRBO;
+
 	unsigned int gBuffer;
 	unsigned int g_positionMap;
 	unsigned int g_albedoMap;

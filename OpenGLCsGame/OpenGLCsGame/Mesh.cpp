@@ -122,8 +122,8 @@ void Mesh::Draw()
     m_pShaderProg->SetFloat("use_normalMap", normalNr, false);
     m_pShaderProg->SetFloat("use_heightMap", heightNr, false);
     m_pShaderProg->SetFloat("use_aoMap", aoNr, false);
-    m_pShaderProg->SetFloat("metallicMap", metallicNr, false);
-    m_pShaderProg->SetFloat("roughnessMap", roughnessNr, false);
+    m_pShaderProg->SetFloat("use_metallicMap", metallicNr, false);
+    m_pShaderProg->SetFloat("use_roughnessMap", roughnessNr, false);
     // draw mesh
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

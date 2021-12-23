@@ -13,9 +13,9 @@ Scene* Scene::Instace = nullptr;
 Scene::Scene()
 {
 	Scene::Instace = this;
-	light[0] = glm::vec4(glm::normalize(glm::vec3(0.0f, -1.0f, 1.5f)),1.0f);
-	light[1] = glm::vec4(glm::vec3(3.0f) ,1.0f);
-	light[2] = glm::vec4(glm::vec3(0.1f), 1.0f);
+	light[0] = glm::vec4(glm::normalize(glm::vec3(0.0f, -1.0f, -1.5f)),1.0f);
+	light[1] = glm::vec4(glm::vec3(1.0f) ,1.0f);
+	light[2] = glm::vec4(glm::vec3(0.2f), 1.0f);
 
 	glGenBuffers(1, &_uboPV);
 	glBindBuffer(GL_UNIFORM_BUFFER, _uboPV);
@@ -97,6 +97,7 @@ void Scene::LateUpdate()
 
 		glBindBuffer(GL_UNIFORM_BUFFER, _uboBaseView);
 		glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::vec3), glm::value_ptr(Scene::MainCamera->gameObject->transform->GetWordPosition()));
+		//glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec3), sizeof(glm::vec3), glm::value_ptr(Scene::MainCamera->gameObject->transform->GetWordForward()));
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	}
 	Transform::Root->LateUpdate();

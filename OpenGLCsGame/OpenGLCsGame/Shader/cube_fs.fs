@@ -12,9 +12,10 @@ uniform sampler2D albedoMap;
 void main()
 {
 	// linearly interpolate between both textures (80% container, 20% awesomeface)
-	gAlbedoMap = vec4(texture(albedoMap, TexCoord).rgb,1.0);
+	gAlbedoMap = vec4(texture(albedoMap, TexCoord).xyz,1.0);
+	//gAlbedoMap = vec4(0.8);
 	gPosition = WorldPos;
 	gNormalMap = vec3(0.0 ,1.0 ,0.0);
-	gSpecularMap = vec3(0.5 ,0.5,0.5);
-	gHeightAoMetallicRoughnessMap = vec4(0.5,0.2,0.2,0.2);
+	gSpecularMap = vec3(0.3 ,0.3,0.3);
+	gHeightAoMetallicRoughnessMap = vec4(0.5,1.0,1.0,1.0);
 }
