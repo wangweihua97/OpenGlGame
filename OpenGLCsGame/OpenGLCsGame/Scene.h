@@ -24,6 +24,7 @@ public:
 	void Update();
 	void LateUpdate();
 	void Render();
+	void RenderShadow();
     GameObject* RootGameObject;
 	Transform* RootTransform;
 	CameraComponent* MainCamera;

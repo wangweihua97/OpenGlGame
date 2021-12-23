@@ -54,6 +54,7 @@ public:
 	void Updete();
 	void LateUpdate();
 	void Render();
+	void RenderShadow();
 	void SetGameObject(GameObject* go);
 
 

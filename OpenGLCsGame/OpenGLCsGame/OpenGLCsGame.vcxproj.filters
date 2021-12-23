@@ -222,10 +222,10 @@
     <None Include="Shader\gBuffer.vs">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="Shader\gBufferCommon.fs">
+    <None Include="Shader\ambientGBuffer.fs">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="Shader\gBufferCommon.vs">
+    <None Include="Shader\ambientGBuffer.vs">
       <Filter>资源文件</Filter>
     </None>
     <None Include="Shader\readSkyBox.fs">
@@ -240,13 +240,22 @@
     <None Include="Shader\skyBox.vs">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="Shader\volume.frag">
+    <None Include="Shader\volume.fs">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="Shader\volume.geom">
+    <None Include="Shader\volume.gs">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="Shader\volume.vert">
+    <None Include="Shader\volume.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\animationVolume.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\specularGBuffer.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader\specularGBuffer.vs">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>

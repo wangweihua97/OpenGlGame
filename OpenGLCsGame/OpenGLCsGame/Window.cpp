@@ -71,10 +71,13 @@ void Window::InitResource()
 	ResourceManager::LoadShader("Shader/cube_vs.vs", "Shader/cube_fs.fs", nullptr, "CubeShader");
 	ResourceManager::LoadShader("Shader/model.vs", "Shader/model.fs", nullptr, "ModelShader");
 	ResourceManager::LoadShader("Shader/g_skeleton_model.vs", "Shader/g_skeleton_model.fs", nullptr, "SkeletonModelShader");
-	ResourceManager::LoadShader("Shader/gBufferCommon.vs", "Shader/gBufferCommon.fs", nullptr, "GBufferShader");
+	ResourceManager::LoadShader("Shader/ambientGBuffer.vs", "Shader/ambientGBuffer.fs", nullptr, "AmbientGBuffer");
+	ResourceManager::LoadShader("Shader/specularGBuffer.vs", "Shader/specularGBuffer.fs", nullptr, "SpecularGBuffer");
 	ResourceManager::LoadShader("Shader/readSkyBox.vs", "Shader/readSkyBox.fs", nullptr, "ReadSkyBox");
 	ResourceManager::LoadShader("Shader/skyBox.vs", "Shader/skyBox.fs", nullptr, "SkyBox");
-	_gBufferShader = ResourceManager::GetShaderP("GBufferShader");
+	ResourceManager::LoadShader("Shader/animationVolume.vs", "Shader/volume.fs", "Shader/volume.gs", "Volume");
+	_gBufferShader = ResourceManager::GetShaderP("AmbientGBuffer");
+	_specularGBufferShader = ResourceManager::GetShaderP("SpecularGBuffer");
 	ResourceManager::LoadTexture("Texture/map.jpeg", false, "map");
 }
 
@@ -123,7 +126,7 @@ void Window::Mainloop()
 		SetDeltaTime(deltaTime);
 		glEnable(GL_DEPTH_TEST);
 		glDepthMask(GL_TRUE);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glBindFramebuffer(GL_FRAMEBUFFER, gBuffer);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -148,25 +151,22 @@ void Window::Mainloop()
 		// -----------------------------------------------------------------------------------------------------------------------
 		glClear(GL_COLOR_BUFFER_BIT);
 		glDepthMask(GL_FALSE);
-		_gBufferShader->Use();
-		glActiveTexture(GL_TEXTURE0);
-		glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gPosition"), 0);
-		// and finally bind the texture
-		glBindTexture(GL_TEXTURE_2D, g_positionMap);
-		glActiveTexture(GL_TEXTURE1);
-		glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gAlbedoMap"), 1);
-		glBindTexture(GL_TEXTURE_2D, g_albedoMap);
-		glActiveTexture(GL_TEXTURE2);
-		glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gSpecularMap"), 2);
-		glBindTexture(GL_TEXTURE_2D, g_specularMap);
-		glActiveTexture(GL_TEXTURE3);
-		glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gNormalMap"), 3);
-		glBindTexture(GL_TEXTURE_2D, g_normalMap);
-		glActiveTexture(GL_TEXTURE4);
-		glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gHeightAoMetallicRoughnessMap"), 4);
-		glBindTexture(GL_TEXTURE_2D, g_height_ao_metallic_roughnessMap);
-		renderQuad();
-		
+		AmbientGBuffer();
+		glEnable(GL_STENCIL_TEST);
+		glDepthMask(GL_TRUE);
+		RenderShadowVolIntoStencil();
+		glDrawBuffer(GL_BACK);
+
+		// prevent update to the stencil buffer
+		glStencilOpSeparate(GL_BACK, GL_KEEP, GL_KEEP, GL_KEEP);
+		glStencilFunc(GL_EQUAL, 0x0, 0xFF);
+		glDepthMask(GL_FALSE);
+
+		glEnable(GL_BLEND);
+		glBlendEquation(GL_FUNC_ADD);
+		glBlendFunc(GL_ONE, GL_ONE);
+		SpecularGBuffer();
+		glDisable(GL_STENCIL_TEST);
 		RenderSkyBox();
 		glClear(GL_DEPTH_BUFFER_BIT);
 
@@ -455,6 +455,50 @@ void Window::RenderSkyBox()
 	RenderCube();
 }
 
+void Window::AmbientGBuffer()
+{
+	_gBufferShader->Use();
+	glActiveTexture(GL_TEXTURE0);
+	glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gPosition"), 0);
+	// and finally bind the texture
+	glBindTexture(GL_TEXTURE_2D, g_positionMap);
+	glActiveTexture(GL_TEXTURE1);
+	glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gAlbedoMap"), 1);
+	glBindTexture(GL_TEXTURE_2D, g_albedoMap);
+	glActiveTexture(GL_TEXTURE2);
+	glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gSpecularMap"), 2);
+	glBindTexture(GL_TEXTURE_2D, g_specularMap);
+	glActiveTexture(GL_TEXTURE3);
+	glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gNormalMap"), 3);
+	glBindTexture(GL_TEXTURE_2D, g_normalMap);
+	glActiveTexture(GL_TEXTURE4);
+	glUniform1i(glGetUniformLocation(_gBufferShader->ID, "gHeightAoMetallicRoughnessMap"), 4);
+	glBindTexture(GL_TEXTURE_2D, g_height_ao_metallic_roughnessMap);
+	renderQuad();
+}
+
+void Window::SpecularGBuffer()
+{
+	_specularGBufferShader->Use();
+	glActiveTexture(GL_TEXTURE0);
+	glUniform1i(glGetUniformLocation(_specularGBufferShader->ID, "gPosition"), 0);
+	// and finally bind the texture
+	glBindTexture(GL_TEXTURE_2D, g_positionMap);
+	glActiveTexture(GL_TEXTURE1);
+	glUniform1i(glGetUniformLocation(_specularGBufferShader->ID, "gAlbedoMap"), 1);
+	glBindTexture(GL_TEXTURE_2D, g_albedoMap);
+	glActiveTexture(GL_TEXTURE2);
+	glUniform1i(glGetUniformLocation(_specularGBufferShader->ID, "gSpecularMap"), 2);
+	glBindTexture(GL_TEXTURE_2D, g_specularMap);
+	glActiveTexture(GL_TEXTURE3);
+	glUniform1i(glGetUniformLocation(_specularGBufferShader->ID, "gNormalMap"), 3);
+	glBindTexture(GL_TEXTURE_2D, g_normalMap);
+	glActiveTexture(GL_TEXTURE4);
+	glUniform1i(glGetUniformLocation(_specularGBufferShader->ID, "gHeightAoMetallicRoughnessMap"), 4);
+	glBindTexture(GL_TEXTURE_2D, g_height_ao_metallic_roughnessMap);
+	renderQuad();
+}
+
 void Window::KeyDown(Key key)
 {
 	Log(to_string((int)key));
@@ -463,6 +507,25 @@ void Window::KeyDown(Key key)
 void Window::KeyUp(Key key)
 {
 	Log(to_string((int)key));
+}
+
+void Window::RenderShadowVolIntoStencil()
+{
+	glDrawBuffer(GL_NONE);
+	glDepthMask(GL_FALSE);
+
+	glDisable(GL_CULL_FACE);
+
+	// We need the stencil test to be enabled but we want it
+	// to succeed always. Only the depth test matters.
+	glStencilFunc(GL_ALWAYS, 0, 0xff);
+
+	glStencilOpSeparate(GL_BACK, GL_KEEP, GL_INCR_WRAP, GL_KEEP);
+	glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);
+
+	Scene::Instace->RenderShadow();
+
+	glEnable(GL_CULL_FACE);
 }
 
 void stbi_set_flip_vertically_on_load2(bool b)

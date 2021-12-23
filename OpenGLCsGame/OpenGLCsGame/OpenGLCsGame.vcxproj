@@ -194,12 +194,13 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shader\animationVolume.vs" />
     <None Include="Shader\cube_fs.fs" />
     <None Include="Shader\cube_vs.vs" />
     <None Include="Shader\gBuffer.fs" />
     <None Include="Shader\gBuffer.vs" />
-    <None Include="Shader\gBufferCommon.fs" />
-    <None Include="Shader\gBufferCommon.vs" />
+    <None Include="Shader\ambientGBuffer.fs" />
+    <None Include="Shader\ambientGBuffer.vs" />
     <None Include="Shader\g_skeleton_model.fs" />
     <None Include="Shader\g_skeleton_model.vs" />
     <None Include="Shader\model.fs" />
@@ -210,11 +211,13 @@
     <None Include="Shader\readSkyBox.vs" />
     <None Include="Shader\skyBox.fs" />
     <None Include="Shader\skyBox.vs" />
+    <None Include="Shader\specularGBuffer.fs" />
+    <None Include="Shader\specularGBuffer.vs" />
     <None Include="Shader\specularShadow.fs" />
     <None Include="Shader\specularShadow.vs" />
-    <None Include="Shader\volume.frag" />
-    <None Include="Shader\volume.geom" />
-    <None Include="Shader\volume.vert" />
+    <None Include="Shader\volume.fs" />
+    <None Include="Shader\volume.gs" />
+    <None Include="Shader\volume.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

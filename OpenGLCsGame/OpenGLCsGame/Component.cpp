@@ -43,6 +43,12 @@ void Component::Render()
 		_next->Render();
 }
 
+void Component::RenderShadow()
+{
+	if (_next != nullptr)
+		_next->RenderShadow();
+}
+
 Component::~Component()
 {
 	;

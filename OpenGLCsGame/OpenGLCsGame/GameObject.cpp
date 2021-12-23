@@ -31,3 +31,11 @@ void GameObject::Render()
         iter->second->Render();
     }
 }
+
+void GameObject::RenderShadow()
+{
+    map<string, Component*>::iterator  iter;
+    for (iter = Components.begin(); iter != Components.end(); iter++) {
+        iter->second->RenderShadow();
+    }
+}

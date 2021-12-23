@@ -14,6 +14,7 @@ public:
 	virtual void Update();
 	virtual void LateUpdate();
 	virtual void Render();
+	virtual void RenderShadow();
 	string name;
 
 	template<typename T>

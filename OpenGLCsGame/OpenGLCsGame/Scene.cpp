@@ -16,6 +16,7 @@ Scene::Scene()
 	light[0] = glm::vec4(glm::normalize(glm::vec3(0.0f, -1.0f, -1.5f)),1.0f);
 	light[1] = glm::vec4(glm::vec3(1.0f) ,1.0f);
 	light[2] = glm::vec4(glm::vec3(0.2f), 1.0f);
+	light[3] = glm::vec4(glm::vec3(0.0f,10000.0f,15000.0f), 1.0f);
 
 	glGenBuffers(1, &_uboPV);
 	glBindBuffer(GL_UNIFORM_BUFFER, _uboPV);
@@ -106,4 +107,9 @@ void Scene::LateUpdate()
 void Scene::Render()
 {
 	Transform::Root->Render();
+}
+
+void Scene::RenderShadow()
+{
+	Transform::Root->RenderShadow();
 }

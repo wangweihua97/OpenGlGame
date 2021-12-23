@@ -35,6 +35,8 @@ public:
 	void InitSkyBox();
 	void RenderCube();
 	void RenderSkyBox();
+	void AmbientGBuffer();
+	void SpecularGBuffer();
 
 	unsigned int envCubemap;
 	unsigned int cubeVAO = 0;
@@ -60,6 +62,9 @@ private:
 	Scene* m_scene;
 	Input* _input;
 	Shader* _gBufferShader;
+	Shader* _specularGBufferShader;
+
+	void RenderShadowVolIntoStencil();
 };
 #endif
 

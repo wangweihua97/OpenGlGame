@@ -98,6 +98,7 @@ public:
     Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures, int offset, std::vector<VertexBoneData> bones , Shader* shader);
     void setupMesh(vector<VertexBoneData>& Bones);
     void Draw();
+    void RenderShadow();
 private:
     /*  äÖÈ¾Êý¾Ý  */
     Shader* m_pShaderProg;

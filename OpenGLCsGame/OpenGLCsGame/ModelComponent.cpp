@@ -3,6 +3,9 @@
 #include "GameObject.h"
 #include "Time.h"
 
+bool ModelComponent::_isBoneInit = false;
+ GLint ModelComponent::m_boneLocation[ui_BoneArraySize];
+ GLint ModelComponent::m_shadowBoneLocation[ui_BoneArraySize];
 ModelComponent::ModelComponent(GameObject* gameObject) :Component(gameObject)
 {
     _isPlay = false;
@@ -26,14 +29,25 @@ void ModelComponent::Render()
     if (_isPlay)
     {
         animationTime += Time::GetDeltaTime();
-        vector<glm::mat4> Transforms;
-        BoneTransform(animationTime, Transforms);
-        for (unsigned int i = 0; i < Transforms.size(); i++) {
-            SetBoneTransform(i, Transforms[i]);
+        BoneTransform(animationTime, boneTransforms);
+        for (unsigned int i = 0; i < boneTransforms.size(); i++) {
+            SetBoneTransform(i, boneTransforms[i]);
         }
     }
     Draw();
 	__super::Render();
+}
+
+void ModelComponent::RenderShadow()
+{
+    ResourceManager::GetShaderP("Volume")->Use();
+    ResourceManager::GetShaderP("Volume")->SetMatrix4("model", gameObject->transform->worldTransformMat);
+    for (unsigned int i = 0; i < boneTransforms.size(); i++) {
+        SetShadowBoneTransform(i, boneTransforms[i]);
+    }
+    for (unsigned int i = 0; i < meshes.size(); i++)
+        meshes[i].RenderShadow();
+    __super::RenderShadow();
 }
 
 void ModelComponent::InitAnimation()
@@ -67,14 +81,8 @@ void ModelComponent::LoadModel(Shader* shader, string const& path, bool gamma = 
     m_pShaderProg = shader;
     m_NumBones = 0;
     totalVertices = 0;
-    shader->Use();
-    for (unsigned int i = 0; i < ui_BoneArraySize; i++) {
-
-        char Name[128];
-        memset(Name, 0, sizeof(Name));
-        _snprintf_s(Name, sizeof(Name), "gBones[%d]", i);
-        m_boneLocation[i] = glGetUniformLocation(shader->ID, Name);
-    }
+    if (!_isBoneInit)
+        InitBone();
     loadModel(path);
     aiMatrix4x4 a = pScene->mRootNode->mTransformation;
     m_GlobalInverseTransform = glm::transpose(glm::make_mat4(&a.a1));
@@ -368,6 +376,28 @@ void ModelComponent::LoadBones(unsigned int MeshIndex, const aiMesh* pMesh, std:
     }
 }
 
+void ModelComponent::InitBone()
+{
+    _isBoneInit = true;
+    ResourceManager::GetShaderP("Volume")->Use();
+    for (unsigned int i = 0; i < ui_BoneArraySize; i++) {
+
+        char Name[128];
+        memset(Name, 0, sizeof(Name));
+        _snprintf_s(Name, sizeof(Name), "gBones[%d]", i);
+        m_shadowBoneLocation[i] = glGetUniformLocation(ResourceManager::GetShaderP("Volume")->ID, Name);
+    }
+
+    m_pShaderProg->Use();
+    for (unsigned int i = 0; i < ui_BoneArraySize; i++) {
+
+        char Name[128];
+        memset(Name, 0, sizeof(Name));
+        _snprintf_s(Name, sizeof(Name), "gBones[%d]", i);
+        m_boneLocation[i] = glGetUniformLocation(m_pShaderProg->ID, Name);
+    }
+}
+
 void ModelComponent::BoneTransform(float TimeInSeconds, std::vector<glm::mat4>& Transforms)
 {
     glm::mat4 Identity;
@@ -530,6 +560,14 @@ void ModelComponent::SetBoneTransform(unsigned int Index, const glm::mat4& Trans
     assert(Index < 100);
     /*glm::mat4 a = glm::transpose(Transform);*/
     glUniformMatrix4fv(m_boneLocation[Index], 1, GL_FALSE, &Transform[0][0]);
+    //m_pShaderProg->setUniformIndex(Index, Transform);
+}
+
+void ModelComponent::SetShadowBoneTransform(unsigned int Index, const glm::mat4& Transform)
+{
+    assert(Index < 100);
+    /*glm::mat4 a = glm::transpose(Transform);*/
+    glUniformMatrix4fv(m_shadowBoneLocation[Index], 1, GL_FALSE, &Transform[0][0]);
     //m_pShaderProg->setUniformIndex(Index, Transform);
 }
 

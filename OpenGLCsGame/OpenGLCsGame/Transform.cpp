@@ -206,6 +206,15 @@ void Transform::Render()
 	}
 }
 
+void Transform::RenderShadow()
+{
+	gameObject->RenderShadow();
+	for (vector<Transform*>::iterator iter = childs.begin(); iter != childs.end(); iter++)
+	{
+		(*iter)->RenderShadow();
+	}
+}
+
 void Transform::SetGameObject(GameObject* go)
 {
 	gameObject = go;

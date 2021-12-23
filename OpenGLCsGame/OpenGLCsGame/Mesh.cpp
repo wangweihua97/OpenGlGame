@@ -72,9 +72,6 @@ void Mesh::setupMesh(vector<VertexBoneData>& Bones)
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(indices[0]), &indices[0], GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
-
-
-    
 }
 void Mesh::Draw()
 {
@@ -131,4 +128,11 @@ void Mesh::Draw()
 
     // always good practice to set everything back to defaults once configured.
     glActiveTexture(GL_TEXTURE0);
+}
+
+void Mesh::RenderShadow()
+{
+    glBindVertexArray(VAO);
+    glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
 }

@@ -23,19 +23,21 @@ public:
     string directory;
     std::vector<VertexBoneData> Bones;
     unsigned int totalVertices = 0;
-
+    vector<glm::mat4> boneTransforms;
     bool gammaCorrection;
     const aiScene* pScene; //!< The Assimp aiScene object. 
 	ModelComponent(GameObject* gameObject);
 	void Update()override;
 	void LateUpdate()override;
 	void Render()override;
+    void RenderShadow()override;
 	void InitAnimation();
 	void PlayAnimation(string animaName);
 	void LoadModel(Shader* shader, string const& path, bool gamma);
     void Draw();
     void BoneTransform(float TimeInSeconds, std::vector<glm::mat4>& Transforms); //!< Traverses the scene hierarchy and fetches the matrix transformation for each bone given the time. 
     void SetBoneTransform(unsigned int Index, const glm::mat4& Transform); //!< Inserts a bone transformation in the uniform array at the given index. 
+    void SetShadowBoneTransform(unsigned int Index, const glm::mat4& Transform);
     int animationIndex;
     float animationTime;
     map<string,int > animations;
@@ -43,7 +45,9 @@ public:
 private:
     bool _isPlay;
     static const unsigned int ui_BoneArraySize = 100;
-    GLint m_boneLocation[ui_BoneArraySize];
+    static GLint m_boneLocation[];
+    static GLint m_shadowBoneLocation[];
+    static bool _isBoneInit;
     Assimp::Importer importer;
     string texturePath;
     unsigned int m_NumBones;
@@ -64,6 +68,7 @@ private:
 
     glm::mat4 GlobalTransformation; //!< Root node transformation. 
     glm::mat4 m_GlobalInverseTransform;
+    void InitBone();
     void LoadBones(unsigned int MeshIndex, const aiMesh* pMesh, std::vector<VertexBoneData>& Bones, std::vector<unsigned int> baseVertex, glm::mat4 nodeTransform); //!< Loads the bone data from a given mesh. 
     void CalcInterpolatedRotation(aiQuaternion& Out, float AnimationTime, const aiNodeAnim* pNodeAnim); //!< Calculates the interpolated quaternion between two keyframes. 
     void CalcInterpolatedScaling(aiVector3D& Out, float AnimationTime, const aiNodeAnim* pNodeAnim); //!< Calculates the interpolated scaling vector between two keyframes. 
