@@ -88,6 +88,7 @@ void CubeMeshComponent::LateUpdate()
 
 void CubeMeshComponent::Render()
 {
+    glDisable(GL_CULL_FACE);
     _shader->Use();
     glm::mat4 a = gameObject->transform->worldTransformMat;
     _shader->SetMatrix4("model", a ,true);
@@ -100,5 +101,7 @@ void CubeMeshComponent::Render()
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
 
+    glActiveTexture(GL_TEXTURE0);
+    glEnable(GL_CULL_FACE);
     __super::Render();
 }
