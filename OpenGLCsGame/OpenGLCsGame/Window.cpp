@@ -130,6 +130,7 @@ void Window::Mainloop()
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glBindFramebuffer(GL_FRAMEBUFFER, gBuffer);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glDepthMask(GL_TRUE);
 		_input->Update();
 		//for each frame 
 
@@ -137,7 +138,9 @@ void Window::Mainloop()
 		Scene::Instace->LateUpdate();
 		Scene::Instace->Render();
 
-		//glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		//RenderShadowVolIntoStencil();
+		//SpecularGBuffer();
 
 		glBindFramebuffer(GL_READ_FRAMEBUFFER, gBuffer);
 		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0); // write to default framebuffer
@@ -151,22 +154,29 @@ void Window::Mainloop()
 		// -----------------------------------------------------------------------------------------------------------------------
 		glClear(GL_COLOR_BUFFER_BIT);
 		glDepthMask(GL_FALSE);
+		//glDrawBuffer(GL_BACK);
 		AmbientGBuffer();
+
 		glEnable(GL_STENCIL_TEST);
-		glDepthMask(GL_TRUE);
+		glEnable(GL_DEPTH_CLAMP);
+		//glEnable(GL_DEPTH_TEST);
+		//glDepthMask(GL_TRUE);
 		RenderShadowVolIntoStencil();
 		glDrawBuffer(GL_BACK);
-
+		glDisable(GL_DEPTH_TEST);
+		//glDisable(GL_DEPTH_CLAMP);
 		// prevent update to the stencil buffer
 		glStencilOpSeparate(GL_BACK, GL_KEEP, GL_KEEP, GL_KEEP);
 		glStencilFunc(GL_EQUAL, 0x0, 0xFF);
-		glDepthMask(GL_FALSE);
+		//glDepthMask(GL_FALSE);
 
 		glEnable(GL_BLEND);
 		glBlendEquation(GL_FUNC_ADD);
 		glBlendFunc(GL_ONE, GL_ONE);
+		//glDrawBuffer(GL_BACK);
 		SpecularGBuffer();
 		glDisable(GL_STENCIL_TEST);
+		glDisable(GL_BLEND);
 		RenderSkyBox();
 		glClear(GL_DEPTH_BUFFER_BIT);
 

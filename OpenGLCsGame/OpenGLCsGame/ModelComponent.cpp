@@ -46,7 +46,10 @@ void ModelComponent::RenderShadow()
         SetShadowBoneTransform(i, boneTransforms[i]);
     }
     for (unsigned int i = 0; i < meshes.size(); i++)
+    {
         meshes[i].RenderShadow();
+    }
+        
     __super::RenderShadow();
 }
 
@@ -230,6 +233,7 @@ Mesh ModelComponent::processMesh(unsigned int meshId, aiMesh* mesh)
         for (unsigned int j = 0; j < face.mNumIndices; j++)
             indices.push_back(face.mIndices[j]);
     }
+    DetermineAdjacency(indices);
     // process materials
     aiMaterial* material = pScene->mMaterials[mesh->mMaterialIndex];
     // we assume a convention for sampler names in the shaders. Each diffuse texture should be named
@@ -266,6 +270,162 @@ Mesh ModelComponent::processMesh(unsigned int meshId, aiMesh* mesh)
     int offset = baseVertex[meshId];
     // return a mesh object created from the extracted mesh data
     return Mesh(vertices, indices, textures, offset, Bones , m_pShaderProg);
+}
+
+void ModelComponent::DetermineAdjacency(vector<unsigned int>& el)
+{
+    // Elements with adjacency info
+    vector<unsigned int> elAdj;
+
+    // Copy and make room for adjacency info
+    for (GLuint i = 0; i < el.size(); i += 3)
+    {
+        elAdj.push_back(el[i]);
+        elAdj.push_back(-1);
+        elAdj.push_back(el[i + 1]);
+        elAdj.push_back(-1);
+        elAdj.push_back(el[i + 2]);
+        elAdj.push_back(-1);
+    }
+
+    // Find matching edges
+    for (GLuint i = 0; i < elAdj.size(); i += 6)
+    {
+        // A triangle
+        int a1 = elAdj[i];
+        int b1 = elAdj[i + 2];
+        int c1 = elAdj[i + 4];
+
+        // Scan subsequent triangles
+        for (GLuint j = i + 6; j < elAdj.size(); j += 6)
+        {
+            int a2 = elAdj[j];
+            int b2 = elAdj[j + 2];
+            int c2 = elAdj[j + 4];
+
+            // Edge 1 == Edge 1
+            if ((a1 == a2 && b1 == b2) || (a1 == b2 && b1 == a2))
+            {
+                elAdj[i + 1] = c2;
+                elAdj[j + 1] = c1;
+            }
+            // Edge 1 == Edge 2
+            if ((a1 == b2 && b1 == c2) || (a1 == c2 && b1 == b2))
+            {
+                elAdj[i + 1] = a2;
+                elAdj[j + 3] = c1;
+            }
+            // Edge 1 == Edge 3
+            if ((a1 == c2 && b1 == a2) || (a1 == a2 && b1 == c2))
+            {
+                elAdj[i + 1] = b2;
+                elAdj[j + 5] = c1;
+            }
+            // Edge 2 == Edge 1
+            if ((b1 == a2 && c1 == b2) || (b1 == b2 && c1 == a2))
+            {
+                elAdj[i + 3] = c2;
+                elAdj[j + 1] = a1;
+            }
+            // Edge 2 == Edge 2
+            if ((b1 == b2 && c1 == c2) || (b1 == c2 && c1 == b2))
+            {
+                elAdj[i + 3] = a2;
+                elAdj[j + 3] = a1;
+            }
+            // Edge 2 == Edge 3
+            if ((b1 == c2 && c1 == a2) || (b1 == a2 && c1 == c2))
+            {
+                elAdj[i + 3] = b2;
+                elAdj[j + 5] = a1;
+            }
+            // Edge 3 == Edge 1
+            if ((c1 == a2 && a1 == b2) || (c1 == b2 && a1 == a2))
+            {
+                elAdj[i + 5] = c2;
+                elAdj[j + 1] = b1;
+            }
+            // Edge 3 == Edge 2
+            if ((c1 == b2 && a1 == c2) || (c1 == c2 && a1 == b2))
+            {
+                elAdj[i + 5] = a2;
+                elAdj[j + 3] = b1;
+            }
+            // Edge 3 == Edge 3
+            if ((c1 == c2 && a1 == a2) || (c1 == a2 && a1 == c2))
+            {
+                elAdj[i + 5] = b2;
+                elAdj[j + 5] = b1;
+            }
+        }
+    }
+
+    // Look for any outside edges
+    for (GLuint i = 0; i < elAdj.size(); i += 6)
+    {
+        if (elAdj[i + 1] == -1) elAdj[i + 1] = elAdj[i + 4];
+        if (elAdj[i + 3] == -1) elAdj[i + 3] = elAdj[i];
+        if (elAdj[i + 5] == -1) elAdj[i + 5] = elAdj[i + 2];
+    }
+
+    // Copy all data back into el
+    el = elAdj;
+}
+
+void ModelComponent::FindAdjacencies(const aiMesh* paiMesh, vector<unsigned int>& Indices)
+{
+    // Step 1 - find the two triangles that share every edge
+    for (unsigned int i = 0; i < paiMesh->mNumFaces; i++) {
+        const aiFace& face = paiMesh->mFaces[i];
+
+        aiFace Unique;
+
+        // If a position vector is duplicated in the VB we fetch the 
+        // index of the first occurrence.
+        /*for (unsigned int j = 0; j < 3; j++) {
+            unsigned int Index = face.mIndices[j];
+            aiVector3D& v = paiMesh->mVertices[Index];
+
+            if (m_posMap.find(v) == m_posMap.end()) {
+                m_posMap[v] = Index;
+            }
+            else {
+                Index = m_posMap[v];
+            }
+
+            Unique.Indices[j] = Index;
+        }
+
+        m_uniqueFaces.push_back(Unique);
+
+        Edge e1(Unique.Indices[0], Unique.Indices[1]);
+        Edge e2(Unique.Indices[1], Unique.Indices[2]);
+        Edge e3(Unique.Indices[2], Unique.Indices[0]);
+
+        m_indexMap[e1].AddNeigbor(i);
+        m_indexMap[e2].AddNeigbor(i);
+        m_indexMap[e3].AddNeigbor(i);*/
+    }
+
+    // Step 2 - build the index buffer with the adjacency info
+    /*for (unsigned int i = 0; i < paiMesh->mNumFaces; i++) {
+        const aiFace& face = m_uniqueFaces[i];
+
+        for (uint j = 0; j < 3; j++) {
+            Edge e(face.Indices[j], face.Indices[(j + 1) % 3]);
+            assert(m_indexMap.find(e) != m_indexMap.end());
+            Neighbors n = m_indexMap[e];
+            uint OtherTri = n.GetOther(i);
+
+            assert(OtherTri != -1);
+
+            const Face& OtherFace = m_uniqueFaces[OtherTri];
+            uint OppositeIndex = OtherFace.GetOppositeIndex(e);
+
+            Indices.push_back(face.Indices[j]);
+            Indices.push_back(OppositeIndex);
+        }
+    }*/
 }
 
 vector<Texture> ModelComponent::loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName)

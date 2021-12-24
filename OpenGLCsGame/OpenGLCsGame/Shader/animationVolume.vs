@@ -26,5 +26,5 @@ void main()
     BoneTransform += gBones[ BoneIDs[2] ] * Weights[2];
     BoneTransform += gBones[ BoneIDs[3] ] * Weights[3];
 	vec4 world = BoneTransform * vec4(aPos, 1.0);
-	VPosition = (view * model * world).xyz;
+	VPosition = (model * world).xyz;
 }

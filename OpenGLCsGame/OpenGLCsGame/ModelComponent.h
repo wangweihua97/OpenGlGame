@@ -69,6 +69,8 @@ private:
     glm::mat4 GlobalTransformation; //!< Root node transformation. 
     glm::mat4 m_GlobalInverseTransform;
     void InitBone();
+    void DetermineAdjacency(vector<unsigned int>& el);
+    void FindAdjacencies(const aiMesh* paiMesh, vector<unsigned int>& Indices);
     void LoadBones(unsigned int MeshIndex, const aiMesh* pMesh, std::vector<VertexBoneData>& Bones, std::vector<unsigned int> baseVertex, glm::mat4 nodeTransform); //!< Loads the bone data from a given mesh. 
     void CalcInterpolatedRotation(aiQuaternion& Out, float AnimationTime, const aiNodeAnim* pNodeAnim); //!< Calculates the interpolated quaternion between two keyframes. 
     void CalcInterpolatedScaling(aiVector3D& Out, float AnimationTime, const aiNodeAnim* pNodeAnim); //!< Calculates the interpolated scaling vector between two keyframes. 
