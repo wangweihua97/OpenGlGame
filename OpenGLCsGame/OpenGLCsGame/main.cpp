@@ -19,7 +19,7 @@ void T3()
 
 int main()
 {
-	Window* window = new Window(800, 600);
+	Window* window = new Window(1200, 800);
 	window->Mainloop();
 	delete window;
 	return 0;

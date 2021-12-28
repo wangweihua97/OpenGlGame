@@ -7,6 +7,7 @@
 #include <boost/bind/bind.hpp>
 #include "Shader.h"
 #include <stb_image.h>
+#include "Tween.h"
 Window* Window::Instance = NULL;
 Window::Window(int width, int height)
 {
@@ -124,6 +125,9 @@ void Window::Mainloop()
 		float deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 		SetDeltaTime(deltaTime);
+		Time::Update();
+		_input->Update();
+
 		glEnable(GL_DEPTH_TEST);
 		glDepthMask(GL_TRUE);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -132,7 +136,7 @@ void Window::Mainloop()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 		glEnable(GL_DEPTH_TEST);
 		glDepthMask(GL_TRUE);
-		_input->Update();
+		
 		//for each frame 
 
 		Scene::Instace->Update();
@@ -184,6 +188,7 @@ void Window::Mainloop()
 		glBindFramebuffer(GL_READ_FRAMEBUFFER, gBuffer);
 		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 		glBlitFramebuffer(0, 0, Width, Height, 0, 0, Width, Height, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glDepthFunc(GL_LEQUAL);
 		RenderSkyBox();
 		glDepthFunc(GL_LESS);
@@ -272,7 +277,41 @@ void Window::SetCurTime(float time)
 
 void Window::InitScene()
 {
+	
+
 	m_scene = Scene::Init();
+	auto x = [this](float p)
+	{
+		Log("当前时间" + to_string(p));
+	};
+	Tween::DoTween<float>(0.0f, 2.0f, 2.0f, x);
+
+	auto y = [this](glm::vec3 p)
+	{
+		Log("当前x值" + to_string(p.x) + "---当前y值" + to_string(p.y) + "---当前z值" + to_string(p.z));
+	};
+	Tween::DoTween<glm::vec3>(glm::vec3(0.0,1.0,2.0), glm::vec3(10.0, 2.0, -2.0), 1.0f, y ,Ease::InOutSine);
+	auto a = [this]()
+	{
+		int k = 0;
+		Log(to_string(Width) + "----------" + to_string(Height));
+		this->Log("延迟2秒后");
+		auto b = [&k ,this]()
+		{
+			this->Log("延迟1秒输出" + to_string(k));
+			k++;
+		};
+		TimesScheduleCommand* c = new TimesScheduleCommand(b, 10, 1);
+		auto m = [this]()
+		{
+			this->Log("任务完成");
+		};
+		c->onComplete = m;
+		Time::PushCommand(c);
+	};
+	DelayScheduleCommand* d = new  DelayScheduleCommand(a, 2.0);
+	Time::PushCommand(d);
+	
 }
 
 void Window::renderQuad()

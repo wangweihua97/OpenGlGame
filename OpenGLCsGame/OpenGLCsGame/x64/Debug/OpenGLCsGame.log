@@ -1,8 +1,38 @@
-﻿  Window.cpp
-E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(97,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+﻿  Tween.cpp
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\ScheduleCommand.h(97,104): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\ScheduleCommand.h(114,101): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Tween.cpp(11,16): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Tween.cpp(16,18): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Tween.cpp(21,18): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+  Tweener.cpp
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\ScheduleCommand.h(97,104): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\ScheduleCommand.h(114,101): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+  Window.cpp
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\ScheduleCommand.h(97,104): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\ScheduleCommand.h(114,101): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
 E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(98,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(100,16): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(99,24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
 E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(101,16): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(116,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(122,29): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(102,16): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(117,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(123,29): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(312,57): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Tweener.h(41,67): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Tweener.h(20): message : 在编译 类 模板 成员函数“Tweener<glm::vec3>::Tweener(T,T,float,std::function<void (glm::vec3)>,std::function<T (T,T,float)>)”时
+          with
+          [
+              T=glm::vec3
+          ]
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Tween.h(53): message : 查看对正在编译的函数 模板 实例化“Tweener<glm::vec3>::Tweener(T,T,float,std::function<void (glm::vec3)>,std::function<T (T,T,float)>)”的引用
+          with
+          [
+              T=glm::vec3
+          ]
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Tween.h(53): message : 查看对正在编译的 类 模板 实例化“Tweener<glm::vec3>”的引用
+E:\OpenG\GLCS\OpenGLCsGame\OpenGLCsGame\Window.cpp(293): message : 查看对正在编译的函数 模板 实例化“Tweener<glm::vec3> *Tween::DoTween<glm::vec3>(T,T,float,std::function<void (glm::vec3)>,Ease)”的引用
+          with
+          [
+              T=glm::vec3
+          ]
+  正在生成代码...
   OpenGLCsGame.vcxproj -> E:\OpenG\GLCS\OpenGLCsGame\x64\Debug\OpenGLCsGame.exe

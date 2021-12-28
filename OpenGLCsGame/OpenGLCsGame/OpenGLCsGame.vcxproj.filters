@@ -52,6 +52,12 @@
     <Filter Include="源文件\Mesh">
       <UniqueIdentifier>{4bab91fa-ede1-4fe3-88a2-3468b1cf79e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Time">
+      <UniqueIdentifier>{ef2d0b80-6b45-40b8-a362-56765c59eac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Time">
+      <UniqueIdentifier>{33a73310-1e84-46e2-9013-88de4f69ea7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -70,9 +76,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Time.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GUID.h">
@@ -114,6 +117,18 @@
     <ClInclude Include="ModelComponent.h">
       <Filter>头文件\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>头文件\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="ScheduleCommand.h">
+      <Filter>头文件\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Tween.h">
+      <Filter>头文件\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Tweener.h">
+      <Filter>头文件\Time</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OpenGLCsGame.rc">
@@ -140,9 +155,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Time.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GUID.cpp">
@@ -183,6 +195,18 @@
     </ClCompile>
     <ClCompile Include="ModelComponent.cpp">
       <Filter>源文件\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>源文件\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="ScheduleCommand.cpp">
+      <Filter>源文件\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Tween.cpp">
+      <Filter>源文件\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Tweener.cpp">
+      <Filter>源文件\Time</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

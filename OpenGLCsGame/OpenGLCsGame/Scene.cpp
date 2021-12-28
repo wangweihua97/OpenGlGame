@@ -69,12 +69,12 @@ Scene::Scene()
 	model_d->LoadModel(ResourceManager::GetShaderP("SkeletonModelShader"), "Model/zombieWalk/scene.gltf", false);
 	model_d->InitAnimation();
 
-	GameObject* e = new GameObject("Gun", Transform::Root);
+	/*GameObject* e = new GameObject("Gun", Transform::Root);
 	e->transform->localPosition = glm::vec3(20.0f, 15.0f, 0.0f);
 	e->transform->localScale = glm::vec3(10.0f);
 	ModelComponent* model_e = e->AddComponent<ModelComponent>();
 	model_e->LoadModel(ResourceManager::GetShaderP("SkeletonModelShader"), "Model/machinegun/scene.gltf", false);
-	model_e->InitAnimation();
+	model_e->InitAnimation();*/
 }
 
 Scene* Scene::Init()
